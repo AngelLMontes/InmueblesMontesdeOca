@@ -31,6 +31,23 @@
             gap: 10px;
             flex-wrap: wrap;
         }
+        
+        .filtros-precio {
+            margin: 10px auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        #selectPrecio {
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+            outline: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
         .btn-filtro {
             padding: 10px 20px;
             font-size: 15px;
@@ -142,7 +159,21 @@
         <div class="filtros-estado">
             <button class="btn-filtro" onclick="filtrarPorEstado('Yucatán')">📍 Yucatán</button>
             <button class="btn-filtro" onclick="filtrarPorEstado('Morelos')">📍 Morelos</button>
-            <button class="btn-filtro" onclick="filtrarPorEstado('')">Mostrar Todo</button>
+            <button class="btn-filtro" onclick="limpiarFiltros()">Mostrar Todo</button>
+        </div>
+
+        <div class="filtros-precio">
+            <label for="selectPrecio">Filtrar por precio:</label>
+            <select id="selectPrecio" onchange="filtrarInmuebles()">
+                <option value="todos">Todos los precios</option>
+                <option value="50000">50,000 MXN</option>
+                <option value="100000">100,000 MXN</option>
+                <option value="150000">150,000 MXN</option>
+                <option value="200000">200,000 MXN</option>
+                <option value="1000000">1 MDP MXN</option>
+                <option value="2000000">2 MDP MXN</option>
+                <option value="5000000">5 MDP MXN</option>
+            </select>
         </div>
 
         <div class="buscador-container">
@@ -151,7 +182,7 @@
 
         <section class="galeria-flujo">
             
-            <div class="bloque-inmueble">
+            <div class="bloque-inmueble" data-precio="580000">
                 <div class="contenedor-foto">
                     <img src="iimo/Portada.jpg" onclick="abrirGaleria(['iimo/Portada.jpg', 'iimo/img2.jpg', 'iimo/img3.jpg', 'iimo/img4.jpg','iimo/img5.jpg', 'iimo/img6.jpg'])" />
                     <div class="indicador-mas"></div>
@@ -168,368 +199,382 @@
                 </div>
             </div>
 
-            <div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/im1.jpg" onclick="abrirGaleria(['iimo/im1.jpg', 'iimo/im2.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p>Se vende Terreno en Yucatán. - En la zona de Nuktal -<br>
-        - 250 metros cuadrados - Acepta Infonavit - cerca de la Playa.<br>
-        - $100,000.00<br><br>
-        📞 9097328852 Contacto con Clara Alatorre, de parte de Angel L Montes</p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="100000">
+                <div class="contenedor-foto">
+                    <img src="iimo/im1.jpg" onclick="abrirGaleria(['iimo/im1.jpg', 'iimo/im2.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p>Se vende Terreno en Yucatán. - En la zona de Nuktal -<br>
+                    - 250 metros cuadrados - Acepta Infonavit - cerca de la Playa.<br>
+                    - $100,000.00<br><br>
+                    📞 9097328852 Contacto con Clara Alatorre, de parte de Angel L Montes</p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/images2.jpg" onclick="abrirGaleria(['iimo/images2.jpg', 'iimo/images3.jpg', 'iimo/images4.jpg', 'iimo/images5.jpg', 'iimo/images6.jpg', 'iimo/images7.jpg', 'iimo/images8.jpg', 'iimo/images1.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p>Casa en San Sebastián – Mérida Centro (Yucatán)<br>
-        Precio: $3,800,000 MXN<br><br>
-        2 Dormitorios, 3.5 Baños, Piscina y Terraza Tropical.<br>
-        Más información con Angel L Montes, sólo WhatsApp.</p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="3800000">
+                <div class="contenedor-foto">
+                    <img src="iimo/images2.jpg" onclick="abrirGaleria(['iimo/images2.jpg', 'iimo/images3.jpg', 'iimo/images4.jpg', 'iimo/images5.jpg', 'iimo/images6.jpg', 'iimo/images7.jpg', 'iimo/images8.jpg', 'iimo/images1.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p>Casa en San Sebastián – Mérida Centro (Yucatán)<br>
+                    Precio: $3,800,000 MXN<br><br>
+                    2 Dormitorios, 3.5 Baños, Piscina y Terraza Tropical.<br>
+                    Más información con Angel L Montes, sólo WhatsApp.</p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/imge1.jpg" onclick="abrirGaleria(['iimo/imge1.jpg', 'iimo/img2.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p>Venta de 58 hectáreas con Cenote en Valladolid Yucatán a buen precio<br>
-        9851004735 Luis Fernando Che, de parte de Angel L Montes</p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="0">
+                <div class="contenedor-foto">
+                    <img src="iimo/imge1.jpg" onclick="abrirGaleria(['iimo/imge1.jpg', 'iimo/img2.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p>Venta de 58 hectáreas con Cenote en Valladolid Yucatán a buen precio<br>
+                    9851004735 Luis Fernando Che, de parte de Angel L Montes</p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/imagen1.jpg" onclick="abrirGaleria(['iimo/imagen1.jpg', 'iimo/imagen2.jpg', 'iimo/imagen3.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p>VENDO BODEGA en San Agustín Tlaxiaca.<br>
-        Área de Bodega: 2,000 mts. / Estacionamiento: 48 mts.<br><br>
-        🏗️ INSTALACIONES: Cuarto de equipo, Caseta, Cisterna, Oficinas.<br>
-        📞 7717940737 Contacto con Teodora Vargas, de parte de Angel L Montes.</p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="0">
+                <div class="contenedor-foto">
+                    <img src="iimo/imagen1.jpg" onclick="abrirGaleria(['iimo/imagen1.jpg', 'iimo/imagen2.jpg', 'iimo/imagen3.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p>VENDO BODEGA en San Agustín Tlaxiaca.<br>
+                    Área de Bodega: 2,000 mts. / Estacionamiento: 48 mts.<br><br>
+                    🏗️ INSTALACIONES: Cuarto de equipo, Caseta, Cisterna, Oficinas.<br>
+                    📞 7717940737 Contacto con Teodora Vargas, de parte de Angel L Montes.</p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/uno1.jpg" onclick="abrirGaleria(['iimo/uno1.jpg', 'iimo/uno2.jpg', 'iimo/uno3.jpg', 'iimo/uno4.jpg', 'iimo/uno5.jpg', 'iimo/uno6.jpg', 'iimo/uno7.jpg', 'iimo/uno8.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Última casa separada por tan solo $840,000</strong><br>
-        El Modelo Santa Cruz es una casa ideal para quienes buscan vivir en la zona sur de Mérida.<br><br>
-        ⚡Características:<br>
-        - Casa independiente (separada)<br>
-        - Terreno de 5.20x20m<br>
-        - 2 habitaciones amplias<br>
-        - Sala, comedor y cocina<br>
-        - Baño completo<br>
-        - Pasillo propio<br>
-        - Cerca del anillo periférico<br><br>
-        📞 9992605639 Contáctanos y agenda tu cita, servicios Inmoviliarios Yucatán<br>
-        de parte de Angel L Montes</p>
-        <p><a target="_blank" href="https://maps.app.goo.gl/R7nMKqMSDo4Wpwkc7">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="840000">
+                <div class="contenedor-foto">
+                    <img src="iimo/uno1.jpg" onclick="abrirGaleria(['iimo/uno1.jpg', 'iimo/uno2.jpg', 'iimo/uno3.jpg', 'iimo/uno4.jpg', 'iimo/uno5.jpg', 'iimo/uno6.jpg', 'iimo/uno7.jpg', 'iimo/uno8.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Última casa separada por tan solo $840,000</strong><br>
+                    El Modelo Santa Cruz es una casa ideal para quienes buscan vivir en la zona sur de Mérida.<br><br>
+                    ⚡Características:<br>
+                    - Casa independiente (separada)<br>
+                    - Terreno de 5.20x20m<br>
+                    - 2 habitaciones amplias<br>
+                    - Sala, comedor y cocina<br>
+                    - Baño completo<br>
+                    - Pasillo propio<br>
+                    - Cerca del anillo periférico<br><br>
+                    📞 9992605639 Contáctanos y agenda tu cita, servicios Inmoviliarios Yucatán<br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/R7nMKqMSDo4Wpwkc7">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/dos1.jpg" onclick="abrirGaleria(['iimo/dos1.jpg', 'iimo/dos2.jpg', 'iimo/dos3.jpg', 'iimo/dos4.jpg', 'iimo/dos5.jpg', 'iimo/dos6.jpg', 'iimo/dos7.jpg', 'iimo/dos8.jpg', 'iimo/dos9.jpg', 'iimo/dos10.jpg', 'iimo/dos11.jpg', 'iimo/dos12.jpg', 'iimo/dos13.jpg', 'iimo/dos14.jpg', 'iimo/dos15.jpg', 'iimo/dos16.jpg', 'iimo/dos17.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>¡SE VENDE DEPARTAMENTO EN CUERNAVACA, MORELOS!</strong><br>
-        Excelente opción para vivir o invertir en la Unidad Habitacional José María Morelos.<br><br>
-        ⚡CARACTERÍSTICAS:<br>
-        - Superficie: 60 m² (Tercer nivel)<br>
-        - 2 recámaras y 1 baño completo<br>
-        - Cocina semi equipada y Sala-comedor<br>
-        - Área de lavado y Tinaco propio<br>
-        - Todos los servicios y Estacionamiento<br>
-        - Escritura pública<br><br>
-        💰 <strong>Precio: $810,000</strong> (Recursos propios)<br>
-        📞 734 150 6912 Informes, Krdnas Rueda Aremy Giio <br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.google.com/?cid=5031122618029773891&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="810000">
+                <div class="contenedor-foto">
+                    <img src="iimo/dos1.jpg" onclick="abrirGaleria(['iimo/dos1.jpg', 'iimo/dos2.jpg', 'iimo/dos3.jpg', 'iimo/dos4.jpg', 'iimo/dos5.jpg', 'iimo/dos6.jpg', 'iimo/dos7.jpg', 'iimo/dos8.jpg', 'iimo/dos9.jpg', 'iimo/dos10.jpg', 'iimo/dos11.jpg', 'iimo/dos12.jpg', 'iimo/dos13.jpg', 'iimo/dos14.jpg', 'iimo/dos15.jpg', 'iimo/dos16.jpg', 'iimo/dos17.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>¡SE VENDE DEPARTAMENTO EN CUERNAVACA, MORELOS!</strong><br>
+                    Excelente opción para vivir o invertir en la Unidad Habitacional José María Morelos.<br><br>
+                    ⚡CARACTERÍSTICAS:<br>
+                    - Superficie: 60 m² (Tercer nivel)<br>
+                    - 2 recámaras y 1 baño completo<br>
+                    - Cocina semi equipada y Sala-comedor<br>
+                    - Área de lavado y Tinaco propio<br>
+                    - Todos los servicios y Estacionamiento<br>
+                    - Escritura pública<br><br>
+                    💰 <strong>Precio: $810,000</strong> (Recursos propios)<br>
+                    📞 734 150 6912 Informes, Krdnas Rueda Aremy Giio <br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.google.com/?cid=5031122618029773891&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/tres.jpg" onclick="abrirGaleria(['iimo/tres.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>CASA EN VENTA EN PIEDRA DE AGUA</strong><br>
-        Excelente oportunidad ubicada a solo una cuadra del transporte público en Yucatán.<br><br>
-        ⚡Especificaciones:<br>
-        - Precio: $790,000 MXN<br>
-        - 2 habitaciones<br>
-        - Terreno de 5×19.85m<br>
-        - Completamente bardeada<br>
-        - Se acepta crédito Infonavit o recurso propio<br><br>
-        📞 9991282595 Contáctanos para más información, Amc Mary Sol <br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.google.com/?cid=12573204650183201312&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="790000">
+                <div class="contenedor-foto">
+                    <img src="iimo/tres.jpg" onclick="abrirGaleria(['iimo/tres.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>CASA EN VENTA EN PIEDRA DE AGUA</strong><br>
+                    Excelente oportunidad ubicada a solo una cuadra del transporte público en Yucatán.<br><br>
+                    ⚡Especificaciones:<br>
+                    - Precio: $790,000 MXN<br>
+                    - 2 habitaciones<br>
+                    - Terreno de 5×19.85m<br>
+                    - Completamente bardeada<br>
+                    - Se acepta crédito Infonavit o recurso propio<br><br>
+                    📞 9991282595 Contáctanos para más información, Amc Mary Sol <br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.google.com/?cid=12573204650183201312&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/cua1.jpg" onclick="abrirGaleria(['iimo/cua1.jpg', 'iimo/cua2.jpg', 'iimo/cua3.jpg', 'iimo/cua4.jpg', 'iimo/cua5.jpg', 'iimo/cua6.jpg', 'iimo/cua7.jpg', 'iimo/cua8.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Casas en venta en Gran Calzada</strong><br>
-        Excelente oportunidad residencial con diversas opciones de financiamiento.<br><br>
-        ⚡Especificaciones:<br>
-        - Precio: $725,000 MXN<br>
-        - Ubicación: Gran Calzada, Yucatán<br>
-        - Créditos: Infonavit, Fovissste e Hipotecarios<br><br>
-        📞 9999 963322 Info, Carlos Viera <br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.google.com/?cid=13282363057629604542&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="725000">
+                <div class="contenedor-foto">
+                    <img src="iimo/cua1.jpg" onclick="abrirGaleria(['iimo/cua1.jpg', 'iimo/cua2.jpg', 'iimo/cua3.jpg', 'iimo/cua4.jpg', 'iimo/cua5.jpg', 'iimo/cua6.jpg', 'iimo/cua7.jpg', 'iimo/cua8.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Casas en venta en Gran Calzada</strong><br>
+                    Excelente oportunidad residencial con diversas opciones de financiamiento.<br><br>
+                    ⚡Especificaciones:<br>
+                    - Precio: $725,000 MXN<br>
+                    - Ubicación: Gran Calzada, Yucatán<br>
+                    - Créditos: Infonavit, Fovissste e Hipotecarios<br><br>
+                    📞 9999 963322 Info, Carlos Viera <br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.google.com/?cid=13282363057629604542&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/cin1.jpg" onclick="abrirGaleria(['iimo/cin1.jpg', 'iimo/cin2.jpg', 'iimo/cin3.jpg', 'iimo/cin4.jpg', 'iimo/cin5.jpg', 'iimo/cin6.jpg', 'iimo/cin7.jpg', 'iimo/cin8.jpg', 'iimo/cin9.jpg', 'iimo/cin10.jpg', 'iimo/cin11.jpg', 'iimo/cin12.jpg', 'iimo/cin13.jpg', 'iimo/cin14.jpg', 'iimo/cin15.jpg', 'iimo/cin16.jpg', 'iimo/cin17.jpg', 'iimo/cin18.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>CASA EN VENTA | COLONIA PAPAYOS</strong><br>
-        Zona Norte, Cuernavaca, Morelos. Excelente oportunidad para invertir en zona tranquila y segura.<br><br>
-        ⚡Distribución y Amenidades:<br>
-        - Terreno: 370 m² | Construcción: 160 m² (2 niveles)<br>
-        - 4 Recámaras totales (1 PB / 3 PA) y 2 Baños completos<br>
-        - Cocina, Sala/Comedor y Terraza<br>
-        - Alberca, Cuarto de lavado y Malla de seguridad<br>
-        - A 100m de Av. Principal (Ruta 5 cercana)<br>
-        - Cesión de Derechos<br><br>
-        💰 <strong>$3,100,000 MXN</strong><br>
-        📞 777 152 05 15 / 777 420 33 21, Álvarez Franco <br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/zFRUnTRRJPCg65Jn7">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="3100000">
+                <div class="contenedor-foto">
+                    <img src="iimo/cin1.jpg" onclick="abrirGaleria(['iimo/cin1.jpg', 'iimo/cin2.jpg', 'iimo/cin3.jpg', 'iimo/cin4.jpg', 'iimo/cin5.jpg', 'iimo/cin6.jpg', 'iimo/cin7.jpg', 'iimo/cin8.jpg', 'iimo/cin9.jpg', 'iimo/cin10.jpg', 'iimo/cin11.jpg', 'iimo/cin12.jpg', 'iimo/cin13.jpg', 'iimo/cin14.jpg', 'iimo/cin15.jpg', 'iimo/cin16.jpg', 'iimo/cin17.jpg', 'iimo/cin18.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>CASA EN VENTA | COLONIA PAPAYOS</strong><br>
+                    Zona Norte, Cuernavaca, Morelos. Excelente oportunidad para invertir en zona tranquila y segura.<br><br>
+                    ⚡Distribución y Amenidades:<br>
+                    - Terreno: 370 m² | Construcción: 160 m² (2 niveles)<br>
+                    - 4 Recámaras totales (1 PB / 3 PA) y 2 Baños completos<br>
+                    - Cocina, Sala/Comedor y Terraza<br>
+                    - Alberca, Cuarto de lavado y Malla de seguridad<br>
+                    - A 100m de Av. Principal (Ruta 5 cercana)<br>
+                    - Cesión de Derechos<br><br>
+                    💰 <strong>$3,100,000 MXN</strong><br>
+                    📞 777 152 05 15 / 777 420 33 21, Álvarez Franco <br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/zFRUnTRRJPCg65Jn7">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/seis1.jpg" onclick="abrirGaleria(['iimo/seis1.jpg', 'iimo/seis2.jpg', 'iimo/seis3.jpg', 'iimo/seis4.jpg', 'iimo/seis5.jpg', 'iimo/seis6.jpg', 'iimo/seis7.jpg', 'iimo/seis8.jpg', 'iimo/seis9.jpg', 'iimo/seis10.jpg', 'iimo/seis11.jpg', 'iimo/seis12.jpg', 'iimo/seis13.jpg', 'iimo/seis14.jpg', 'iimo/seis15.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Venta casa en fraccionamiento las américas etapa 6</strong><br>
-        Excelente ubicación y estado de conservación en una de las zonas con mayor plusvalía de Mérida.<br><br>
-        ⚡Especificaciones y Mejoras:<br>
-        - 2 recámaras, 1 baño completo y 1/2 baño<br>
-        - Lavadero techado y patio trasero cementado (muros a 3m)<br>
-        - Instalaciones listas para gas estacionario, boiler y 3 aires acondicionados<br>
-        - Herrería en puerta delantera y pasillo<br>
-        - Lista para ampliación en planta alta<br><br>
-        💰 <strong>Precio: $1,900,000 MXN</strong> (Crédito hipotecario vigente)<br>
-        📞 9994366220 WhatsApp, Gerardo Carvajal<br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/9xhTbccBvdSkpiaSA">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="1900000">
+                <div class="contenedor-foto">
+                    <img src="iimo/seis1.jpg" onclick="abrirGaleria(['iimo/seis1.jpg', 'iimo/seis2.jpg', 'iimo/seis3.jpg', 'iimo/seis4.jpg', 'iimo/seis5.jpg', 'iimo/seis6.jpg', 'iimo/seis7.jpg', 'iimo/seis8.jpg', 'iimo/seis9.jpg', 'iimo/seis10.jpg', 'iimo/seis11.jpg', 'iimo/seis12.jpg', 'iimo/seis13.jpg', 'iimo/seis14.jpg', 'iimo/seis15.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Venta casa en fraccionamiento las américas etapa 6</strong><br>
+                    Excelente ubicación y estado de conservación en una de las zonas con mayor plusvalía de Mérida.<br><br>
+                    ⚡Especificaciones y Mejoras:<br>
+                    - 2 recámaras, 1 baño completo y 1/2 baño<br>
+                    - Lavadero techado y patio trasero cementado (muros a 3m)<br>
+                    - Instalaciones listas para gas estacionario, boiler y 3 aires acondicionados<br>
+                    - Herrería en puerta delantera y pasillo<br>
+                    - Lista para ampliación en planta alta<br><br>
+                    💰 <strong>Precio: $1,900,000 MXN</strong> (Crédito hipotecario vigente)<br>
+                    📞 9994366220 WhatsApp, Gerardo Carvajal<br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/9xhTbccBvdSkpiaSA">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/sie1.jpg" onclick="abrirGaleria(['iimo/sie1.jpg', 'iimo/sie2.jpg', 'iimo/sie3.jpg', 'iimo/sie4.jpg', 'iimo/sie5.jpg', 'iimo/sie6.jpg', 'iimo/sie7.jpg', 'iimo/sie8.jpg', 'iimo/sie9.jpg', 'iimo/sie10.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>CANSADO DE VIVIR CON LA SUEGRA - Modelo Tunich</strong><br>
-        Últimas 5 casas disponibles en Jacarandas (San José), Kanasín. Construcción tradicional cerca de servicios.<br><br>
-        ⚡Especificaciones:<br>
-        - Mérida Yucatán<br>
-        - Precio: $840,000 MXN<br>
-        - 2 recámaras y baño completo<br>
-        - Cocina independiente y Sala-comedor<br>
-        - Área de estacionamiento<br>
-        - Cerca de Oxxo, Willys y transporte público<br>
-        - Aceptamos únicamente crédito Infonavit<br><br>
-        📞 9992586011 Envía un WhatsApp, Peter Gomez<br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/cRZcquCKVpAWusxN9">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="840000">
+                <div class="contenedor-foto">
+                    <img src="iimo/sie1.jpg" onclick="abrirGaleria(['iimo/sie1.jpg', 'iimo/sie2.jpg', 'iimo/sie3.jpg', 'iimo/sie4.jpg', 'iimo/sie5.jpg', 'iimo/sie6.jpg', 'iimo/sie7.jpg', 'iimo/sie8.jpg', 'iimo/sie9.jpg', 'iimo/sie10.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>CANSADO DE VIVIR CON LA SUEGRA - Modelo Tunich</strong><br>
+                    Últimas 5 casas disponibles en Jacarandas (San José), Kanasín. Construcción tradicional cerca de servicios.<br><br>
+                    ⚡Especificaciones:<br>
+                    - Mérida Yucatán<br>
+                    - Precio: $840,000 MXN<br>
+                    - 2 recámaras y baño completo<br>
+                    - Cocina independiente y Sala-comedor<br>
+                    - Área de estacionamiento<br>
+                    - Cerca de Oxxo, Willys y transporte público<br>
+                    - Aceptamos únicamente crédito Infonavit<br><br>
+                    📞 9992586011 Envía un WhatsApp, Peter Gomez<br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/cRZcquCKVpAWusxN9">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/ocho1.jpg" onclick="abrirGaleria(['iimo/ocho1.jpg', 'iimo/ocho2.jpg', 'iimo/ocho3.jpg', 'iimo/ocho4.jpg', 'iimo/ocho5.jpg', 'iimo/ocho6.jpg', 'iimo/ocho7.jpg', 'iimo/ocho8.jpg', 'iimo/ocho9.jpg', 'iimo/ocho10.jpg', 'iimo/ocho11.jpg', 'iimo/ocho12.jpg', 'iimo/ocho13.jpg', 'iimo/ocho14.jpg', 'iimo/ocho15.jpg', 'iimo/ocho16.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Residencial Las Palmas - Yucatán</strong><br>
-        Esta puede ser la casa que estabas buscando en la Zona Oriente. Firma inmediata disponible.<br><br>
-        ⚡Especificaciones e Incluye:<br>
-        - Precio: Desde $1,235,000 MXN<br>
-        - Terreno: 7 x 21.5 m (Vivienda independiente)<br>
-        - 2 recámaras con clóset y 1½ baños<br>
-        - Sala, comedor, cocina y barra desayunadora<br>
-        - Patio amplio y barda perimetral<br>
-        - ¡Incluye 2 aires acondicionados!<br><br>
-        📞 990 369 2232 Informes y citas, Asesoría de Casas Infonavit Yucatán<br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/rfWFAoa97NNoAKHi8">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="1235000">
+                <div class="contenedor-foto">
+                    <img src="iimo/ocho1.jpg" onclick="abrirGaleria(['iimo/ocho1.jpg', 'iimo/ocho2.jpg', 'iimo/ocho3.jpg', 'iimo/ocho4.jpg', 'iimo/ocho5.jpg', 'iimo/ocho6.jpg', 'iimo/ocho7.jpg', 'iimo/ocho8.jpg', 'iimo/ocho9.jpg', 'iimo/ocho10.jpg', 'iimo/ocho11.jpg', 'iimo/ocho12.jpg', 'iimo/ocho13.jpg', 'iimo/ocho14.jpg', 'iimo/ocho15.jpg', 'iimo/ocho16.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Residencial Las Palmas - Yucatán</strong><br>
+                    Esta puede ser la casa que estabas buscando en la Zona Oriente. Firma inmediata disponible.<br><br>
+                    ⚡Especificaciones e Incluye:<br>
+                    - Precio: Desde $1,235,000 MXN<br>
+                    - Terreno: 7 x 21.5 m (Vivienda independiente)<br>
+                    - 2 recámaras con clóset y 1½ baños<br>
+                    - Sala, comedor, cocina y barra desayunadora<br>
+                    - Patio amplio y barda perimetral<br>
+                    - ¡Incluye 2 aires acondicionados!<br><br>
+                    📞 990 369 2232 Informes y citas, Asesoría de Casas Infonavit Yucatán<br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/rfWFAoa97NNoAKHi8">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/nue1.jpg" onclick="abrirGaleria(['iimo/nue1.jpg', 'iimo/nue2.jpg', 'iimo/nue3.jpg', 'iimo/nue4.jpg', 'iimo/nue5.jpg', 'iimo/nue6.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Rancho de 168 hectáreas en Panabá, Yucatán</strong><br>
-        Excelente propiedad con recursos naturales propios, ideal para inversión agrícola o ganadera.<br><br>
-        ⚡Características principales:<br>
-        - Precio: $12,500,000 MXN (A tratar)<br>
-        - Extensión: 168 Hectáreas<br>
-        - Incluye: Cenote grande y pozo profundo<br>
-        - Ubicación: Panabá, Yucatán, México<br><br>
-        📞 9996438291 Información en privado o celular, Jorge Chay Cetina.<br>
-         de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/1CJTBrAWKVt7KZqG8">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="12500000">
+                <div class="contenedor-foto">
+                    <img src="iimo/nue1.jpg" onclick="abrirGaleria(['iimo/nue1.jpg', 'iimo/nue2.jpg', 'iimo/nue3.jpg', 'iimo/nue4.jpg', 'iimo/nue5.jpg', 'iimo/nue6.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Rancho de 168 hectáreas en Panabá, Yucatán</strong><br>
+                    Excelente propiedad con recursos naturales propios, ideal para inversión agrícola o ganadera.<br><br>
+                    ⚡Características principales:<br>
+                    - Precio: $12,500,000 MXN (A tratar)<br>
+                    - Extensión: 168 Hectáreas<br>
+                    - Incluye: Cenote grande y pozo profundo<br>
+                    - Ubicación: Panabá, Yucatán, México<br><br>
+                    📞 9996438291 Información en privado o celular, Jorge Chay Cetina.<br>
+                     de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/1CJTBrAWKVt7KZqG8">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/dies1.jpg" onclick="abrirGaleria(['iimo/dies1.jpg', 'iimo/dies2.jpg', 'iimo/dies3.jpg', 'iimo/dies4.jpg', 'iimo/dies5.jpg', 'iimo/dies6.jpg', 'iimo/dies7.jpg', 'iimo/dies8.jpg', 'iimo/dies9.jpg', 'iimo/dies10.jpg', 'iimo/dies11.jpg', 'iimo/dies12.jpg', 'iimo/dies13.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Casa Equipada en San Diego Cutz - Conkal, Yucatán</strong><br>
-        Propiedad con amplitud, privacidad y ahorro real en consumo eléctrico. Totalmente equipada.<br><br>
-        ⚡Distribución y Equipamiento:<br>
-        - Precio: $5,850,000 MXN<br>
-        - Terreno: 480 m² | Construcción: 347 m²<br>
-        - 4 recámaras con baño completo y clósets (Principal con vestidor y estudio)<br>
-        - Cocina equipada y cuarto de lavado con máquinas<br>
-        - Alberca, jardín con riego automático y bodega<br>
-        - Cochera eléctrica techada para 4 autos<br>
-        - Incluye 24 paneles solares y aire acondicionado en todas las áreas<br><br>
-        📞 999 139 1659 Agendar cita, Reyna Bejarano <br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/Yo3DHAmEsFvB7Ktx7">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="5850000">
+                <div class="contenedor-foto">
+                    <img src="iimo/dies1.jpg" onclick="abrirGaleria(['iimo/dies1.jpg', 'iimo/dies2.jpg', 'iimo/dies3.jpg', 'iimo/dies4.jpg', 'iimo/dies5.jpg', 'iimo/dies6.jpg', 'iimo/dies7.jpg', 'iimo/dies8.jpg', 'iimo/dies9.jpg', 'iimo/dies10.jpg', 'iimo/dies11.jpg', 'iimo/dies12.jpg', 'iimo/dies13.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Casa Equipada en San Diego Cutz - Conkal, Yucatán</strong><br>
+                    Propiedad con amplitud, privacidad y ahorro real en consumo eléctrico. Totalmente equipada.<br><br>
+                    ⚡Distribución y Equipamiento:<br>
+                    - Precio: $5,850,000 MXN<br>
+                    - Terreno: 480 m² | Construcción: 347 m²<br>
+                    - 4 recámaras con baño completo y clósets (Principal con vestidor y estudio)<br>
+                    - Cocina equipada y cuarto de lavado con máquinas<br>
+                    - Alberca, jardín con riego automático y bodega<br>
+                    - Cochera eléctrica techada para 4 autos<br>
+                    - Incluye 24 paneles solares y aire acondicionado en todas las áreas<br><br>
+                    📞 999 139 1659 Agendar cita, Reyna Bejarano <br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/Yo3DHAmEsFvB7Ktx7">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/once1.jpg" onclick="abrirGaleria(['iimo/once1.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Bugambilias de Oriente - Kanasín, Yucatán</strong><br>
-        ¡Estrena casa este 2026! Exclusividad de solo 54 casas en Cuauhtémoc. Construcción de block y garantía de durabilidad.<br><br>
-        ⚡Especificaciones y Créditos:<br>
-        - Precio: Desde $767,000 MXN<br>
-        - Ubicación: Zona Oriente (Kanasín)<br>
-        - Espacios amplios y funcionales<br>
-        - Aceptamos: INFONAVIT, FOVISSSTE, Bancarios y Recursos propios<br><br>
-        📞 9992217382 Mándame mensaje, Gibran Ake <br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/L61hChk6ECDkSyfW7">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="767000">
+                <div class="contenedor-foto">
+                    <img src="iimo/once1.jpg" onclick="abrirGaleria(['iimo/once1.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Bugambilias de Oriente - Kanasín, Yucatán</strong><br>
+                    ¡Estrena casa este 2026! Exclusividad de solo 54 casas en Cuauhtémoc. Construcción de block y garantía de durabilidad.<br><br>
+                    ⚡Especificaciones y Créditos:<br>
+                    - Precio: Desde $767,000 MXN<br>
+                    - Ubicación: Zona Oriente (Kanasín)<br>
+                    - Espacios amplios y funcionales<br>
+                    - Aceptamos: INFONAVIT, FOVISSSTE, Bancarios y Recursos propios<br><br>
+                    📞 9992217382 Mándame mensaje, Gibran Ake <br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/L61hChk6ECDkSyfW7">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/trece1.jpg" onclick="abrirGaleria(['iimo/trece1.jpg', 'iimo/trece2.jpg', 'iimo/trece3.jpg', 'iimo/trece4.jpg', 'iimo/trece5.jpg', 'iimo/trece6.jpg', 'iimo/trece7.jpg', 'iimo/trece8.jpg', 'iimo/trece9.jpg', 'iimo/trece10.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Venta De Casa En Centro</strong><br>
-        Excelente ubicación con todos los servicios a la mano. Lista para habitar o invertir.<br><br>
-        ⚡Especificaciones:<br>
-        - Ubicación: Yucatán<br>
-        - Precio: $1,199,000 MXN<br>
-        - 2 Habitaciones, Sala, Comedor, Cocina y Baño<br>
-        - Terreno: 5 x 18 m<br>
-        - Aceptamos: Crédito Infonavit y Efectivo<br><br>
-        📞 52 999 491 7774 Información por WhatsApp, Ale Balam<br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/YQekq3eMyVaSj6ds7">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="1199000">
+                <div class="contenedor-foto">
+                    <img src="iimo/trece1.jpg" onclick="abrirGaleria(['iimo/trece1.jpg', 'iimo/trece2.jpg', 'iimo/trece3.jpg', 'iimo/trece4.jpg', 'iimo/trece5.jpg', 'iimo/trece6.jpg', 'iimo/trece7.jpg', 'iimo/trece8.jpg', 'iimo/trece9.jpg', 'iimo/trece10.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Venta De Casa En Centro</strong><br>
+                    Excelente ubicación con todos los servicios a la mano. Lista para habitar o invertir.<br><br>
+                    ⚡Especificaciones:<br>
+                    - Ubicación: Yucatán<br>
+                    - Precio: $1,199,000 MXN<br>
+                    - 2 Habitaciones, Sala, Comedor, Cocina y Baño<br>
+                    - Terreno: 5 x 18 m<br>
+                    - Aceptamos: Crédito Infonavit y Efectivo<br><br>
+                    📞 52 999 491 7774 Información por WhatsApp, Ale Balam<br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/YQekq3eMyVaSj6ds7">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/cat1.jpg" onclick="abrirGaleria(['iimo/cat1.jpg', 'iimo/cat2.jpg', 'iimo/cat3.jpg', 'iimo/cat4.jpg', 'iimo/cat5.jpg', 'iimo/cat6.jpg', 'iimo/cat7.jpg', 'iimo/cat8.jpg', 'iimo/cat9.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Casa Nueva Totalmente Amueblada | Vista Hermosa</strong><br>
-        Espectacular residencia que redefine el confort y la modernidad en una de las mejores zonas de Cuernavaca.<br><br>
-        ⚡Características y Lujo:<br>
-        - Ubicación: Vista Hermosa, Cuernavaca Morelos,México.<br>
-        - Precio: $6,600,000 MXN (Se aceptan Créditos)<br>
-        - 4 Amplias recámaras (incluyendo una en planta baja)<br>
-        - 3 Baños completos y Jacuzzi privado<br>
-        - Espacios luminosos y acabados modernos<br>
-        - Ubicada en privada tranquila con vigilancia 24/7<br>
-        - Totalmente amueblada y lista para habitar<br><br>
-        📞 7772339987 WhatsApp, Jaime Arroyo Villanueva<br>
-         de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/7tqyCPHN7M378E599">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="6600000">
+                <div class="contenedor-foto">
+                    <img src="iimo/cat1.jpg" onclick="abrirGaleria(['iimo/cat1.jpg', 'iimo/cat2.jpg', 'iimo/cat3.jpg', 'iimo/cat4.jpg', 'iimo/cat5.jpg', 'iimo/cat6.jpg', 'iimo/cat7.jpg', 'iimo/cat8.jpg', 'iimo/cat9.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Casa Nueva Totalmente Amueblada | Vista Hermosa</strong><br>
+                    Espectacular residencia que redefine el confort y la modernidad en una de las mejores zonas de Cuernavaca.<br><br>
+                    ⚡Características y Lujo:<br>
+                    - Ubicación: Vista Hermosa, Cuernavaca Morelos,México.<br>
+                    - Precio: $6,600,000 MXN (Se aceptan Créditos)<br>
+                    - 4 Amplias recámaras (incluyendo una en planta baja)<br>
+                    - 3 Baños completos y Jacuzzi privado<br>
+                    - Espacios luminosos y acabados modernos<br>
+                    - Ubicada en privada tranquila con vigilancia 24/7<br>
+                    - Totalmente amueblada y lista para habitar<br><br>
+                    📞 7772339987 WhatsApp, Jaime Arroyo Villanueva<br>
+                     de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/7tqyCPHN7M378E599">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
-<div class="bloque-inmueble">
-    <div class="contenedor-foto">
-        <img src="iimo/quin1.jpg" onclick="abrirGaleria(['iimo/quin1.jpg', 'iimo/quin2.jpg', 'iimo/quin3.jpg', 'iimo/quin4.jpg', 'iimo/quin5.jpg', 'iimo/quin6.jpg', 'iimo/quin7.jpg', 'iimo/quin8.jpg', 'iimo/quin9.jpg', 'iimo/quin10.jpg', 'iimo/quin11.jpg', 'iimo/quin12.jpg', 'iimo/quin13.jpg'])" />
-        <div class="indicador-mas"></div>
-    </div>
-    <div class="info-inmueble">
-        <p><strong>Departamento en Venta | Cuernavaca, Morelos</strong><br>
-        Excelente ubicación a unos minutos de Walmart de Domingo Diez. Gran oportunidad de inversión por debajo del precio de mercado.<br><br>
-        ⚡Distribución y Amenidades:<br>
-        - Precio: $2,650,000 MXN<br>
-        - Superficie: 97 m² + 22 m² de estacionamiento techado (2 autos)<br>
-        - 3 recámaras con clóset y 2 baños completos<br>
-        - Cocina equipada con barra de granito y balcón privado<br>
-        - Áreas comunes: Alberca, Jardín, Palapa y Asoleadero<br>
-        - Seguridad: Vigilancia 24 hrs y doble portón eléctrico<br><br>
-        📞 777 670 0125 Agenda tu visita, Fabiola Ornelas<br>
-        de parte de Angel L Montes</p>
-        
-        <p><a target="_blank" href="https://maps.app.goo.gl/gdRZr2kNgAzz9HWd8">Ubicación aproximada</a></p>
-    </div>
-</div>
+            <div class="bloque-inmueble" data-precio="2650000">
+                <div class="contenedor-foto">
+                    <img src="iimo/quin1.jpg" onclick="abrirGaleria(['iimo/quin1.jpg', 'iimo/quin2.jpg', 'iimo/quin3.jpg', 'iimo/quin4.jpg', 'iimo/quin5.jpg', 'iimo/quin6.jpg', 'iimo/quin7.jpg', 'iimo/quin8.jpg', 'iimo/quin9.jpg', 'iimo/quin10.jpg', 'iimo/quin11.jpg', 'iimo/quin12.jpg', 'iimo/quin13.jpg'])" />
+                    <div class="indicador-mas"></div>
+                </div>
+                <div class="info-inmueble">
+                    <p><strong>Departamento en Venta | Cuernavaca, Morelos</strong><br>
+                    Excelente ubicación a unos minutos de Walmart de Domingo Diez. Gran oportunidad de inversión por debajo del precio de mercado.<br><br>
+                    ⚡Distribución y Amenidades:<br>
+                    - Precio: $2,650,000 MXN<br>
+                    - Superficie: 97 m² + 22 m² de estacionamiento techado (2 autos)<br>
+                    - 3 recámaras con clóset y 2 baños completos<br>
+                    - Cocina equipada con barra de granito y balcón privado<br>
+                    - Áreas comunes: Alberca, Jardín, Palapa y Asoleadero<br>
+                    - Seguridad: Vigilancia 24 hrs y doble portón eléctrico<br><br>
+                    📞 777 670 0125 Agenda tu visita, Fabiola Ornelas<br>
+                    de parte de Angel L Montes</p>
+                    <p><a target="_blank" href="https://maps.app.goo.gl/gdRZr2kNgAzz9HWd8">Ubicación aproximada</a></p>
+                </div>
+            </div>
 
         </section>
     </div>
 
     <div id="interfaz-dueno" class="container hidden">
         <button class="btn-main" onclick="regresar()">Volver al inicio</button>
-        <div class="bloque-inmueble">
-             <p>Panel de Dueño en construcción...</p>
+        
+        <div style="margin: 30px auto; max-width: 800px; padding: 20px; background-color: #f8f9fa; border-radius: 15px; border-left: 5px solid #007bff;">
+            <h2 style="color: #007bff; margin-bottom: 15px;">Sección de Dueños</h2>
+            <p style="font-size: 1.1em; line-height: 1.6; color: #333;">
+                Bienvenido, esta es la sección de "Soy dueño", aquí encontrarás mensajes de personas interesadas que necesitan a la brevedad terrenos o casas con sus especificaciones, además de contacto directo y fácil con inversionistas o personas que buscan comprar ya sea en Yucatán o Morelos.
+            </p>
         </div>
+
+        <section class="galeria-flujo">
+            
+            <div class="bloque-inmueble">
+                <div class="contenedor-foto">
+                    <img src="iimo/busqueda.jpg" style="filter: grayscale(0.5);" />
+                </div>
+                <div class="info-inmueble">
+                    <h3 style="color: #d9534f; margin-top: 0;">**SE BUSCA TERRENO URGENTE**</h3>
+                    <p>Corredores, tengo <strong>cliente listo para compra inmediata</strong>.<br><br>
+                    📍 <strong>Zona:</strong> Ocotepec, Ahuatepec o Chamilpa. Morelos.<br>
+                    📏 <strong>Medidas:</strong> 200 a 300 m²<br>
+                    🌲 <strong>Ambiente:</strong> Zona boscosa<br>
+                    🛣️ <strong>Accesos:</strong> Calles pavimentadas, no muy lejos de avenida principal<br><br>
+                    📞 <strong>Informes:</strong><br>
+                    777 152 05 15<br>
+                    777 420 33 21, Álvarez Franco<br>
+                    de parte de Angel L Montes<br><br>
+                    Gracias por el apoyo.</p>
+                </div>
+            </div>
+
+        </section>
     </div>
 
     <div id="visor-fondo" onclick="cerrarVisor()">
@@ -590,13 +635,21 @@
             filtrarInmuebles();
         }
 
+        function limpiarFiltros() {
+            document.getElementById('inputBusqueda').value = "";
+            document.getElementById('selectPrecio').value = "todos";
+            filtrarInmuebles();
+        }
+
         function filtrarInmuebles() {
             let input = document.getElementById('inputBusqueda').value.toLowerCase();
+            let precioSeleccionado = document.getElementById('selectPrecio').value;
             let bloques = document.getElementsByClassName('bloque-inmueble');
 
             for (let i = 0; i < bloques.length; i++) {
                 let infoContainer = bloques[i].getElementsByClassName('info-inmueble')[0];
                 let parrafo = infoContainer.getElementsByTagName('p')[0];
+                let precioInmueble = bloques[i].getAttribute('data-precio');
                 
                 if (!parrafo.dataset.original) {
                     parrafo.dataset.original = parrafo.innerHTML;
@@ -604,7 +657,10 @@
                 
                 let textoParaComparar = parrafo.innerText.toLowerCase();
 
-                if (textoParaComparar.includes(input)) {
+                let cumpleTexto = textoParaComparar.includes(input);
+                let cumplePrecio = (precioSeleccionado === "todos") || (precioInmueble === precioSeleccionado);
+
+                if (cumpleTexto && cumplePrecio) {
                     bloques[i].style.display = "flex";
                     if (input !== "") {
                         let regex = new RegExp(`(${input})`, "gi");
