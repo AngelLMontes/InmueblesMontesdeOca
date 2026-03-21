@@ -162,19 +162,17 @@
             <button class="btn-filtro" onclick="limpiarFiltros()">Mostrar Todo</button>
         </div>
 
-        <div class="filtros-precio">
-            <label for="selectPrecio">Filtrar por precio:</label>
-            <select id="selectPrecio" onchange="filtrarInmuebles()">
-                <option value="todos">Todos los precios</option>
-                <option value="50000">50,000 MXN</option>
-                <option value="100000">100,000 MXN</option>
-                <option value="150000">150,000 MXN</option>
-                <option value="200000">200,000 MXN</option>
-                <option value="1000000">1 MDP MXN</option>
-                <option value="2000000">2 MDP MXN</option>
-                <option value="5000000">5 MDP MXN</option>
-            </select>
-        </div>
+        <div class="filtros-precio" style="text-align: center; margin: 20px 0;">
+    <label for="selectPrecio" style="font-weight: bold;">Presupuesto hasta:</label>
+    <select id="selectPrecio" onchange="filtrarInmuebles()" style="padding: 10px; border-radius: 8px; width: 250px;">
+        <option value="999999999">Mostrar todos</option>
+        <option value="100000">Hasta $100,000 MXN</option>
+        <option value="300000">Hasta $300,000 MXN</option>
+        <option value="1000000">Hasta $1,000,000 MXN</option>
+        <option value="4000000">Hasta $4,000,000 MXN</option>
+        <option value="30000000">Inversiones mayores</option>
+    </select>
+</div>
 
         <div class="buscador-container">
             <input type="text" id="inputBusqueda" placeholder="Buscar por ubicación, tipo o palabras clave..." onkeyup="filtrarInmuebles()">
@@ -541,6 +539,221 @@
                 </div>
             </div>
 
+            <div class="bloque-inmueble" data-precio="26580000">
+    <div class="contenedor-foto">
+        <img src="iimdo/uno1.jpg" onclick="abrirGaleria(['iimdo/uno1.jpg', 'iimdo/uno2.jpg', 'iimdo/uno3.jpg', 'iimdo/uno4.jpg', 'iimdo/uno5.jpg', 'iimdo/uno6.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>ATENCIÓN INVERSIONISTAS | Terreno en Venta, Xochitepec</strong><br>
+        Excelente terreno de 13,290 m² ubicado sobre la Av. Siglo XXI, a pocos metros del restaurante El Campestre y El Faro. Ideal para desarrollo de negocio o fraccionamiento.<br><br>
+        ⚡ Detalles y Ubicación:<br>
+        - Precio: $2,000 por m² (Total: $26,580,000 MXN)<br>
+        - Superficie: 13,290 m²<br>
+        - Ubicación: Xochitepec, Morelos (A solo 2 min. de la caseta del Tec de Monterrey)<br>
+        - Documentación: Escrituras en orden y servicios disponibles<br>
+        - Entorno: Zona de alto crecimiento y plusvalía<br><br>
+        📞 777 258 2185 WhatsApp, Itzel Montes Oca<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/Hn94FSU22EgnZdMUA">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="250000">
+    <div class="contenedor-foto">
+        <img src="iimdo/dos1.jpg" onclick="abrirGaleria(['iimdo/dos1.jpg', 'iimdo/dos2.jpg', 'iimdo/dos3.jpg', 'iimdo/dos4.jpg', 'iimdo/dos5.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Terreno en Venta | Montecasino, Huitzilac</strong><br>
+        Excelente oportunidad de inversión en zona tranquila. Terreno de 300 m² con avance de obra, ideal para continuar proyecto habitacional.<br><br>
+        ⚡ Detalles y Construcción:<br>
+        - Precio: $250,000 MXN<br>
+        - Superficie: 300 m²<br>
+        - Morelos.
+        - Construcción: Obra negra incluida<br>
+        - Servicios: Cisterna con capacidad para 2 pipas y fosa séptica<br>
+        - Ubicación: A solo 300 metros de la parada del camión en Montecasino<br><br>
+        📞 777 266 2242 Brenda Bailón<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/gB3SMhVRmQSbCTiu7">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iimdo/tres1.jpg" onclick="abrirGaleria(['iimdo/tres1.jpg', 'iimdo/tres2.jpg', 'iimdo/tres3.jpg', 'iimdo/tres4.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Terreno en Venta | Col. Eterna Primavera, Temixco</strong><br>
+        ¡Aprovecha esta oportunidad! Bonito terreno de 200 m² con excelente ubicación, a solo 20 metros de la avenida principal. Ideal para comenzar tu proyecto de construcción.<br><br>
+        ⚡ Detalles y Servicios:<br>
+        - Superficie: 200 m²<br>
+        - Ubicación: Col. Eterna Primavera, Temixco, Morelos<br>
+        - Servicios: Agua y luz listos para contratar<br>
+        - Entorno: Zona muy bien ubicada y de fácil acceso<br><br>
+        📞 777 253 9061 Miguel Cruz<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/R9f5HDZxqqoGT2oMA">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iimdo/cuat.jpg" onclick="abrirGaleria(['iimdo/cuat.jpg'])" />
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Terreno en Venta | Alarcón, Ahuatepec</strong><br>
+        Excelente terreno plano de 200 m², ubicado sobre calle justo a un costado de la capilla. Zona urbanizada con todos los servicios disponibles.<br><br>
+        ⚡ Detalles y Condiciones:<br>
+        - Superficie: 200 m² (Terreno plano)<br>
+        - Ubicación: Ahuatepec, Morelos (Pasa la ruta en la esquina)<br>
+        - Servicios: Calle pavimentada y todos los servicios disponibles<br>
+        - Documentación: Sesión de derechos, único dueño<br>
+        - Nota: Solo pago de contado (No se aceptan créditos)<br><br>
+        📞 777 602 0453 Marina García (Cita previa)<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/qWw1TC3qj4RZEDPG7">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iimdo/cinco.jpg" onclick="abrirGaleria(['iimdo/cinco.jpg'])" />
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Hermoso Terreno en Venta | Tepoztlán, Morelos</strong><br>
+        ¡Gran oportunidad! Amplio terreno de 9,000 m² con construcción incluida. Ideal para proyecto residencial, descanso o inversión en una de las zonas con mayor plusvalía y belleza natural.<br><br>
+        ⚡ Detalles del Inmueble:<br>
+        - Superficie: 9,000 m²<br>
+        - Ubicación: Tepoztlán, Morelos<br>
+        - Estado: Incluye construcción aprovechable<br>
+        - Entorno: Paisajes naturales y clima inigualable<br><br>
+        📞 777 299 7258 Alexis Díaz<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/gBgj4kXjxyCdZS6G9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="66000">
+    <div class="contenedor-foto">
+        <img src="iimdo/seis.jpg" onclick="abrirGaleria(['iimdo/seis.jpg'])" />
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Terrenos en Venta | Loma Bonita</strong><br>
+        ¡Oportunidad única desde $66,000 MXN! Terrenos rústicos ideales para inversión a largo plazo con facilidades de pago disponibles.<br><br>
+        ⚡ Detalles y Costos:<br>
+        - Precio: Desde $66,000 MXN ($300 por m²)<br>
+        - Tipo: Terrenos rústicos (Sin servicios)<br>
+        - Ubicación; Loma Bonita, Morelos.
+        - Accesos: Entrada por Carrera de Caballos o por Progreso<br>
+        - Documentación: Cesión de derechos<br>
+        - Facilidades: Planes de pago disponibles<br><br>
+        📞 777 592 20 66 Medina Angie<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/hAqw3zi17FVdRF369">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iimdo/siet1.jpg" onclick="abrirGaleria(['iimdo/siet1.jpg', 'iimdo/siet2.jpg', 'iimdo/siet3.jpg', 'iimdo/siet4.jpg', 'iimdo/siet5.jpg', 'iimdo/siet6.jpg', 'iimdo/siet7.jpg', 'iimdo/siet8.jpg', 'iimdo/siet9.jpg', 'iimdo/siet10.jpg', 'iimdo/siet11.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Propiedad en Venta | Col. Benito Juárez, Xochitepec</strong><br>
+        ¡Atención inversionistas! Se vende propiedad ideal para proyecto de remodelación, ubicada en la colonia Benito Juárez.<br><br>
+        ⚡ Detalles y Servicios:<br>
+        - Ubicación: Xochitepec, Morelos<br>
+        - Estado: Para remodelar<br>
+        - Servicios: Cuenta con agua y luz<br>
+        - Condición: Solo venta de contado<br><br>
+        📞 777 701 6038 Oport Mor<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/hnWZ4Zcd1HqR3v2z5">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="800000">
+    <div class="contenedor-foto">
+        <img src="iimdo/ocho1.jpg" onclick="abrirGaleria(['iimdo/ocho1.jpg', 'iimdo/ocho2.jpg', 'iimdo/ocho3.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Terreno en Venta | Nepantla, Estado de México</strong><br>
+        ¡Oportunidad! Amplio terreno de 3,200 m² con árboles frutales, ubicado en una zona tranquila a solo 5 minutos de la carretera México-Cuautla.<br><br>
+        ⚡ Detalles y Ubicación:<br>
+        - Precio: $250 por m² (Total: $800,000 MXN)<br>
+        - Superficie: 3,200 m²<br>
+        - Estatus: Propiedad privada<br>
+        - Amenidades: Árboles frutales incluidos<br>
+        - Ubicación: Nepantla (Cerca de la carretera México-Cuautla)<br><br>
+        📞 735 139 1735 Lalo Av (Muestra sin compromiso)<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/kmAu1TVwSn4DpCHi9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iimdo/nueve.jpg" onclick="abrirGaleria(['iimdo/nueve.jpg'])" />
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Hermoso Terreno en Venta | Tepoztlán, Morelos</strong><br>
+        ¡Vistas espectaculares! Increíble terreno de 550 m² con ubicación inmejorable, a solo 5 minutos del centro de Tepoztlán. Ideal para construir la casa de tus sueños en un entorno mágico.<br><br>
+        ⚡ Detalles y Ubicación:<br>
+        - Superficie: 550 m²<br>
+        - Ubicación: A 5 minutos del centro de Tepoztlán<br>
+        - Entorno: Zona con hermosas vistas panorámicas y clima ideal<br>
+        - Potencial: Perfecto para proyecto residencial o casa de descanso<br><br>
+        📞 777 299 7258 Alexis Díaz<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/81H3CjoppDsBW3RJ9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="3300000">
+    <div class="contenedor-foto">
+        <img src="iimdo/diez1.jpg" onclick="abrirGaleria(['iimdo/diez1.jpg', 'iimdo/diez2.jpg', 'iimdo/diez3.jpg', 'iimdo/diez4.jpg', 'iimdo/diez5.jpg', 'iimdo/diez6.jpg', 'iimdo/diez7.jpg', 'iimdo/diez8.jpg', 'iimdo/diez9.jpg', 'iimdo/diez10.jpg', 'iimdo/diez11.jpg', 'iimdo/diez12.jpg', 'iimdo/diez13.jpg', 'iimdo/diez14.jpg', 'iimdo/diez15.jpg', 'iimdo/diez16.jpg', 'iimdo/diez17.jpg', 'iimdo/diez18.jpg', 'iimdo/diez19.jpg', 'iimdo/diez20.jpg', 'iimdo/diez21.jpg', 'iimdo/diez22.jpg', 'iimdo/diez23.jpg', 'iimdo/diez24.jpg', 'iimdo/diez25.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Casa en Venta | Zona CONALEP-Palmira, Cuernavaca Morelos</strong><br>
+        Hermosa casa de dos niveles con excelente distribución y amenidades. Ubicada en una de las zonas más tranquilas y buscadas de Cuernavaca.<br><br>
+        ⚡ Distribución y Espacios:<br>
+        - Precio: $3,300,000 MXN<br>
+        - Planta Baja: Sala-comedor, cocina, estudio, baño completo y patio de servicio<br>
+        - Planta Alta: 3 recámaras y 2 baños completos<br>
+        - Áreas Comunes: Jardín y alberca<br>
+        - Estacionamiento: Espacio para 2 autos<br><br>
+        📞 777 257 3103 / 777 287 8984 Cova Oria<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/QXSTHuvFeuyJDMsHA">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="950000">
+    <div class="contenedor-foto">
+        <img src="iimdo/once1.jpg" onclick="abrirGaleria(['iimdo/once1.jpg', 'iimdo/once2.jpg', 'iimdo/once3.jpg', 'iimdo/once4.jpg', 'iimdo/once5.jpg', 'iimdo/once6.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>¡URGE VENDER! | Inmueble con 6 Departamentos - Coahuixtla</strong><br>
+        Excelente oportunidad para inversionistas: Propiedad de 276 m² con 6 unidades listas para rentar en un ambiente tranquilo con árboles frutales.<br><br>
+        ⚡ Distribución y Servicios:<br>
+        - Precio: $950,000 MXN (A tratar o facilidades a 1 año con 50% de enganche)<br>
+        - Unidades: 4 departamentos de 1 recámara y 2 departamentos de 2 recámaras<br>
+        - Características: Baño y lavadero independientes en cada unidad, estilo rústico<br>
+        - Servicios: Agua, luz y drenaje disponibles; espacio para motos<br>
+        - Documentación: Sesión de derechos, papeles en regla 100% comprobables<br>
+        - Ubicación: A cuadra y media del panteón de Coahuixtla, Morelos<br><br>
+        📞 735 372 6543 Mercado Janeth<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/swWpsznGe16VV4qy9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
         </section>
     </div>
 
@@ -574,6 +787,7 @@
                     Gracias por el apoyo.</p>
                 </div>
             </div>
+
 
         </section>
     </div>
@@ -643,39 +857,44 @@
         }
 
         function filtrarInmuebles() {
-            let input = document.getElementById('inputBusqueda').value.toLowerCase();
-            let precioSeleccionado = document.getElementById('selectPrecio').value;
-            let bloques = document.getElementsByClassName('bloque-inmueble');
+    let input = document.getElementById('inputBusqueda').value.toLowerCase();
+    let precioSeleccionado = parseInt(document.getElementById('selectPrecio').value);
+    let bloques = document.getElementsByClassName('bloque-inmueble');
 
-            for (let i = 0; i < bloques.length; i++) {
-                let infoContainer = bloques[i].getElementsByClassName('info-inmueble')[0];
-                let parrafo = infoContainer.getElementsByTagName('p')[0];
-                let precioInmueble = bloques[i].getAttribute('data-precio');
-                
-                if (!parrafo.dataset.original) {
-                    parrafo.dataset.original = parrafo.innerHTML;
-                }
-                
-                let textoParaComparar = parrafo.innerText.toLowerCase();
-
-                let cumpleTexto = textoParaComparar.includes(input);
-                let cumplePrecio = (precioSeleccionado === "todos") || (precioInmueble === precioSeleccionado);
-
-                if (cumpleTexto && cumplePrecio) {
-                    bloques[i].style.display = "flex";
-                    if (input !== "") {
-                        let regex = new RegExp(`(${input})`, "gi");
-                        let textoVisible = parrafo.innerText;
-                        let nuevoTexto = textoVisible.replace(regex, '<span class="resaltado">$1</span>');
-                        parrafo.innerHTML = nuevoTexto.replace(/\n/g, '<br>');
-                    } else {
-                        parrafo.innerHTML = parrafo.dataset.original;
-                    }
-                } else {
-                    bloques[i].style.display = "none";
-                }
-            }
+    for (let i = 0; i < bloques.length; i++) {
+        let infoContainer = bloques[i].getElementsByClassName('info-inmueble')[0];
+        let parrafo = infoContainer.getElementsByTagName('p')[0];
+        let precioInmueble = parseInt(bloques[i].getAttribute('data-precio')) || 0;
+        
+        if (!parrafo.dataset.original) {
+            parrafo.dataset.original = parrafo.innerHTML;
         }
+        
+        let textoParaComparar = parrafo.innerText.toLowerCase();
+        let cumpleTexto = textoParaComparar.includes(input);
+        
+        let cumplePrecio = false;
+        if (precioSeleccionado === 999999999) {
+            cumplePrecio = true;
+        } else if (precioInmueble > 0 && precioInmueble <= precioSeleccionado) {
+            cumplePrecio = true;
+        }
+
+        if (cumpleTexto && cumplePrecio) {
+            bloques[i].style.display = "flex";
+            if (input !== "") {
+                let regex = new RegExp(`(${input})`, "gi");
+                let textoVisible = parrafo.innerText;
+                let nuevoTexto = textoVisible.replace(regex, '<span class="resaltado">$1</span>');
+                parrafo.innerHTML = nuevoTexto.replace(/\n/g, '<br>');
+            } else {
+                parrafo.innerHTML = parrafo.dataset.original;
+            }
+        } else {
+            bloques[i].style.display = "none";
+        }
+    }
+}
     </script>
 </body>
 </html>
