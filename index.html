@@ -143,6 +143,51 @@
             .bloque-inmueble { flex-direction: column; text-align: center; }
             .bloque-inmueble img { width: 100%; height: auto; }
         }
+        .btn-asesoria {
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #007bff;
+    background: white;
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+.btn-asesoria:hover {
+    background: #007bff;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.card-asesoria {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin: 25px auto;
+    max-width: 950px;
+    text-align: justify;
+    line-height: 1.8;
+    color: #333;
+}
+
+.card-asesoria h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.lista-contactos {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 123, 255, 0.05);
+    border-radius: 8px;
+    border-left: 5px solid #007bff;
+}
     </style>
 </head>
 <body>
@@ -151,16 +196,48 @@
         <h1>Bienvenido a Inmuebles Montes de Oca</h1>
         <button class="btn-main" onclick="mostrarInterfaz('inversionista')">Soy inversionista/comprador</button>
         <button class="btn-main" onclick="mostrarInterfaz('dueno')">Soy dueño de una propiedad</button>
+        <button class="btn-asesoria" onclick="mostrarInterfaz('asesoria')">Asesoría inmobiliaria Profesional</button>
     </div>
+    
+    <div id="interfaz-asesoria" class="container hidden">
+        <div class="buscador-container">
+            <button class="btn-main" onclick="regresar()">Volver al inicio</button>
+        </div>
+        
+        <div class="card-asesoria">
+            <h2>Bienvenido</h2>
+            <p>Bienvenido, esta es la sección de Asesoría inmobiliaria Profesional, aquí aparecen números telefónicos y contactos con personas expertas en el ámbito del inmueble, la compra y venta de Terrenos, Casas, Departamentos y asuntos legales, te invito a que contactes a alguno de ellos si necesitas alguna ayuda o consejo antes de comprar o vender una propiedad o si necesitas ayuda para realizar un trámite o contratar un servicio inmobiliario correctamente, se espera que encuentres la ayuda que buscas y que nuestros asesores te sean de utilidad.</p>
+            
+        </p>
+    </div>
+
+    <section class="galeria-flujo">
+        <div class="bloque-inmueble">
+            <div class="contenedor-foto">
+                <img src="iipmdo/Notaria1.jpg" 
+                     style="filter: grayscale(0.2); width: 350px; height: 280px; object-fit: cover; cursor: pointer;" 
+                     onclick="abrirVisor(['iipmdo/Notaria1.jpg'], 0)" 
+                     alt="Ileana Choza - Gestora de trámites Notariales" />
+            </div>
+            <div class="info-inmueble" style="text-align: left;">
+                <h3 style="color: #007bff; margin-top: 0;">GESTORÍA DE TRÁMITES NOTARIALES</h3>
+                <p style="font-size: 1.05em; line-height: 1.6;">
+                    Por favor, para cualquier cosa que necesites no dudes en contactarme, estoy a tus órdenes para apoyarte en tus procesos inmobiliarios.<br><br>
+                    👤 <strong>Asesor:</strong> Ileana Choza<br>
+                    💼 <strong>Especialidad:</strong> Gestora de trámites Notariales<br><br>
+                    📞 <strong>Teléfono de contacto:</strong><br>
+                    <strong>+52 999 968 4175</strong><br><br>
+                    Atentamente,<br>
+                    <strong>de parte de Angel L Montes.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
 
     <div id="interfaz-inversionista" class="container hidden">
         <button class="btn-main" onclick="regresar()">Volver al inicio</button>
         
-        <div class="filtros-estado">
-            <button class="btn-filtro" onclick="filtrarPorEstado('Yucatán')">📍 Yucatán</button>
-            <button class="btn-filtro" onclick="filtrarPorEstado('Morelos')">📍 Morelos</button>
-            <button class="btn-filtro" onclick="limpiarFiltros()">Mostrar Todo</button>
-        </div>
 
         <div class="filtros-precio" style="text-align: center; margin: 20px 0;">
     <label for="selectPrecio" style="font-weight: bold;">Presupuesto hasta:</label>
@@ -172,6 +249,18 @@
         <option value="4000000">Hasta $4,000,000 MXN</option>
         <option value="30000000">Inversiones mayores</option>
     </select>
+</div>
+
+<div class="filtros-estado" style="text-align: center; margin-bottom: 10px;">
+    <button id="btn-yucatan" class="btn-filtro" onclick="establecerEstado('yucatán', 'btn-yucatan')">📍 Yucatán</button>
+    <button id="btn-morelos" class="btn-filtro" onclick="establecerEstado('morelos', 'btn-morelos')">📍 Morelos</button>
+    <button class="btn-filtro" onclick="limpiarFiltros()">Mostrar Todo</button>
+</div>
+
+<div class="filtros-tipo" style="text-align: center; margin-bottom: 10px;">
+    <button id="btn-todos" class="btn-filtro" onclick="establecerTipo('todos', 'btn-todos')">🏠 Todos</button>
+    <button id="btn-casa" class="btn-filtro" onclick="establecerTipo('casa', 'btn-casa')">🏡 Casas</button>
+    <button id="btn-terreno" class="btn-filtro" onclick="establecerTipo('terreno', 'btn-terreno')">🌱 Terrenos</button>
 </div>
 
         <div class="buscador-container">
@@ -733,6 +822,223 @@
     </div>
 </div>
 
+<div class="bloque-inmueble" data-precio="4750000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/uno1.jpg" onclick="abrirVisor(['iipmdo/uno1.jpg', 'iipmdo/uno2.jpg', 'iipmdo/uno3.jpg', 'iipmdo/uno4.jpg', 'iipmdo/uno5.jpg', 'iipmdo/uno6.jpg', 'iipmdo/uno7.jpg', 'iipmdo/uno8.jpg', 'iipmdo/uno9.jpg'], 0)" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>Casa en Venta | Nuevo Yucatán, Mérida Yucatán</strong><br>
+        Excelente oportunidad dentro del Periférico. Ubicación privilegiada en una de las zonas más buscadas de Mérida con alta plusvalía y todos los servicios a minutos.<br><br>
+        ⚡ Distribución y Espacios:<br>
+        - Precio: $4,750,000 MXN<br>
+        - Terreno: 355 m² (10 x 35) | Construcción: 220 m²<br>
+        - Planta Baja: Recámara con baño, sala y comedor corridos, cocina amplia, medio baño, terraza techada, alberca y área de lavado.<br>
+        - Planta Alta: Recámara principal con clóset vestidor y terraza, clóset de blancos y recámara secundaria con baño.<br>
+        - Amenidades: Piscina de 5x3m y cochera techada para 2 autos.<br><br>
+        Apartado: $25,000 MXN | Enganche: 25%<br>
+        Agenda tu visita hoy mismo.<br><br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://www.google.com/maps/search/Nuevo+Yucatan+Merida+Yucatan">Ubicación aproximada en Yucatán</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="8900000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/dos1.jpg" onclick="abrirGaleria(['iipmdo/dos1.jpg', 'iipmdo/dos2.jpg', 'iipmdo/dos3.jpg', 'iipmdo/dos4.jpg', 'iipmdo/dos5.jpg', 'iipmdo/dos6.jpg', 'iipmdo/dos7.jpg', 'iipmdo/dos8.jpg', 'iipmdo/dos9.jpg', 'iipmdo/dos10.jpg', 'iipmdo/dos11.jpg', 'iipmdo/dos12.jpg', 'iipmdo/dos13.jpg', 'iipmdo/dos14.jpg', 'iipmdo/dos15.jpg', 'iipmdo/dos16.jpg', 'iipmdo/dos17.jpg', 'iipmdo/dos18.jpg', 'iipmdo/dos19.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA EN VENTA DE UN SOLO NIVEL CON ALBERCA | Komchén, Mérida, Yucatán</strong><br>
+        Conoce La Rejoyada, una privada residencial al norte de Mérida donde el entorno natural y el diseño urbano se combinan con armonía. Ideal para quienes valoran la calma y el contacto con la naturaleza.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $8,900,000 MXN<br>
+        - Terreno: 1,121 m² | Construcción: 294.99 m²<br>
+        - Habitaciones: 3 Recámaras + Estudio + Área para gimnasio<br>
+        - Baños: 3 completos y 1 medio baño<br>
+        - Estacionamiento: Garaje techado para 2 vehículos<br><br>
+
+        🏢 **Distribución:**<br>
+        Recibidor, sala y comedor corrido con vista a la alberca, alberca con jacuzzi (12m), asoleadero, terraza techada, amplio jardín arbolado, cocina amplia con alacena equipada y área de lavado techada.<br><br>
+
+        🛠️ **Equipamiento:**<br>
+        Aires acondicionados, ventiladores, persianas, carpintería en habitaciones, cocina y alacena, sistema de riego automatizado y alberca con sistema de filtro.<br><br>
+
+        ✨ **Amenidades y Servicios:**<br>
+        Cisterna, facilidad para estacionarse, riego por aspersión, accesibilidad para adultos mayores y personas con discapacidad, cocina integral, fraccionamiento privado, hidroneumático, portero, seguridad 24 horas y mascotas permitidas.<br><br>
+
+        💳 **Formas de Pago:**<br>
+        Apartado $30,000 (7 días), Enganche 20%. Se aceptan recursos propios y/o créditos bancarios.<br><br>
+        
+        📞 999 768 7010 Inmobiliaria 99 Yucatán<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://www.google.com/maps/search/La+Rejoyada+Komchen+Merida+Yucatan">Ubicación aproximada en Yucatán</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="1130000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/tres.jpg" onclick="abrirGaleria(['iipmdo/tres.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA/PROPIEDAD AL PONIENTE | Construcción Tradicional en Yucatán</strong><br>
+        Excelente oportunidad de adquirir una vivienda de construcción tradicional (no prefabricada), ubicada en la zona poniente de Mérida.<br><br>
+        
+        ⚡ **Detalles de la Propiedad:**<br>
+        - Precio: $1,130,000 MXN<br>
+        - Distribución: Sala, comedor y cocina.<br>
+        - Habitaciones: Habitación principal con baño propio y ventanales corredizos, más habitación secundaria.<br>
+        - Baños: 2 baños completos en total.<br>
+        - Exterior: Amplio patio ideal para futuros proyectos.<br><br>
+
+        💳 **Formas de Pago:**<br>
+        Se acepta crédito Infonavit, Fovissste y recursos propios.<br><br>
+        
+        📞 WhatsApp: 999 420 6163 José Carlos Sanchez | Asesor Inmobiliario<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/N1omdU46uCTVYasw6">Ubicación aproximada en Yucatán</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="3900000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/cua1.jpg" onclick="abrirGaleria(['iipmdo/cua1.jpg', 'iipmdo/cua2.jpg', 'iipmdo/cua3.jpg', 'iipmdo/cua4.jpg', 'iipmdo/cua5.jpg', 'iipmdo/cua6.jpg', 'iipmdo/cua7.jpg', 'iipmdo/cua8.jpg', 'iipmdo/cua9.jpg', 'iipmdo/cua10.jpg', 'iipmdo/cua11.jpg', 'iipmdo/cua12.jpg', 'iipmdo/cua13.jpg', 'iipmdo/cua14.jpg', 'iipmdo/cua15.jpg', 'iipmdo/cua16.jpg', 'iipmdo/cua17.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA/HERMOSA PROPIEDAD EQUIPADA | Fraccionamiento Campocielo, Mérida, Yucatán</strong><br>
+        Oportunidad única de adquirir una vivienda totalmente nueva y equipada en uno de los mejores fraccionamientos privados de Mérida. Disponible con opción a entrega amueblada.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio (Sin amueblar): $3,900,000 MXN<br>
+        - Precio (Amueblada): $4,300,000 MXN<br>
+        - Terreno: 198.00 m² (9 x 22) | Construcción: 130.33 m²<br>
+        - Habitaciones: 2 Recámaras con baño completo y clóset (Principal con vestidor)<br>
+        - Baños: 2 completos y 1 medio baño de visitas<br><br>
+
+        🏢 **Distribución y Espacios:**<br>
+        Sala de gran tamaño, comedor amplio, cocina integral con granito original, pasillo de servicio y cuarto de bodega.<br><br>
+
+        🍹 **Áreas de Convivencia:**<br>
+        Patio techado con barra de bebidas e iluminación integrada, ideal para reuniones.<br><br>
+
+        🛠️ **Equipamiento Adicional:**<br>
+        Aires acondicionados en comedor y ambas habitaciones, tanque estacionario y boiler.<br><br>
+        
+        📞 981 113 4021 Angel MV<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/JUAvuz78eNF6Ku6KA">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="200000000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/cinco1.jpg" onclick="abrirGaleria(['iipmdo/cinco1.jpg', 'iipmdo/cinco2.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO DE 12.5 HECTÁREAS | Chichí Suárez, Yucatán</strong><br>
+        Excelente oportunidad de inversión en una ubicación estratégica, ideal para desarrollos de gran escala debido a su conectividad y servicios disponibles.<br><br>
+        
+        ⚡ **Detalles del Terreno:**<br>
+        - Precio: $200,000,000 MXN<br>
+        - Superficie Total: 12.5 Hectáreas (HA)<br>
+        - Ubicación estratégica: A solo 200 metros del Periférico<br><br>
+
+        🛣️ **Infraestructura y Accesos:**<br>
+        - Acceso por 4 calles<br>
+        - Línea eléctrica disponible en todas las vialidades colindantes<br>
+        - Cuenta con un par de calles ya pavimentadas<br><br>
+        
+        📞 999 532 5652 / 999 140 7676 Alvaro Sosa<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/58LYii5zk1KHnSHy7">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="1800000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/seis1.jpg" onclick="abrirGaleria(['iipmdo/seis1.jpg', 'iipmdo/seis2.jpg', 'iipmdo/seis3.jpg', 'iipmdo/seis4.jpg', 'iipmdo/seis5.jpg', 'iipmdo/seis6.jpg', 'iipmdo/seis7.jpg', 'iipmdo/seis8.jpg', 'iipmdo/seis9.jpg', 'iipmdo/seis10.jpg', 'iipmdo/seis11.jpg', 'iipmdo/seis12.jpg', 'iipmdo/seis13.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA LISTA EN JUAN PABLO | Mérida, Yucatán</strong><br>
+        Ubicada estratégicamente a una cuadra del Centro Integral del Adulto Mayor y de Bodega Aurrerá sobre la calle 22. Construcción tradicional con refuerzo para un segundo nivel.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $1,800,000 MXN<br>
+        - Medidas: 8 x 20 metros<br>
+        - Habitaciones: 3 Cuartos amplios<br>
+        - Baños: 3 Baños completos<br><br>
+
+        🏢 **Distribución y Espacios:**<br>
+        Sala y comedor amplios, cubo de luz, área de lavado, pasillo de servicio y porch para auto.<br><br>
+
+        🏊 **Exterior:**<br>
+        Piscina de 3 x 3 metros ideal para el clima de la región.<br><br>
+
+        💳 **Formas de Pago:**<br>
+        Se acepta crédito Infonavit, crédito bancario y recursos propios. Se recibe auto a cuenta y combinaciones de pago.<br><br>
+        
+        📞 WhatsApp: 999 235 4173 Jonas Puc Puc<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/75wveKwTJHa5hLgz7">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="655000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/siete.jpg" onclick="abrirGaleria(['iipmdo/siete.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>VENTA DE CASA EN PIEDRA DE AGUA | Umán, Yucatán</strong><br>
+        Excelente opción ubicada cerca de zona escolar y a solo una cuadra del paradero "Va y Ven". Propiedad funcional con terraza con piso y protectores incluidos.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $655,000 MXN<br>
+        - Terreno: 5 x 20 m | Construcción: 50 m²<br>
+        - Habitaciones: 1 Recámara<br>
+        - Baños: 1 Baño completo<br><br>
+
+        🏢 **Distribución y Espacios:**<br>
+        Sala, comedor y cocina corrido, pasillo lateral y un patio amplio ideal para futuras ampliaciones.<br><br>
+
+        💳 **Formas de Pago:**<br>
+        Se acepta crédito Infonavit, crédito bancario y recursos propios. Puedes apartar la propiedad con solo $15,000 MXN.<br><br>
+        
+        📞 999 109 8395 Pame Cema<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/fdqMNiRMXBXrdvDn6">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="10125000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/ocho1.jpg" onclick="abrirGaleria(['iipmdo/ocho1.jpg', 'iipmdo/ocho2.jpg', 'iipmdo/ocho3.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>VENDO TERRENO EN PALMAS III | Campeche, Yucatán</strong><br>
+        Excelente terreno con ubicación privilegiada y acceso a todos los servicios. Una oportunidad ideal para inversión o desarrollo en una zona de alto valor.<br><br>
+        
+        ⚡ **Detalles del Terreno:**<br>
+        - Precio: $10,125,000 MXN ($1,500.00 por m² - a tratar)<br>
+        - Superficie Total: 6,750 m²<br>
+        - Medidas: 45 x 150 metros<br><br>
+
+        🛠️ **Servicios e Infraestructura:**<br>
+        - Acceso directo a todos los servicios básicos<br>
+        - Ubicación estratégica dentro de la zona de Palmas III<br><br>
+        
+        📞 WhatsApp: 981 105 5923 Robustiano Garcia<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/Lro8XPeNmXfsKfKT8">Ubicación aproximada</a></p>
+    </div>
+</div>
+
 <div class="bloque-inmueble" data-precio="950000">
     <div class="contenedor-foto">
         <img src="iimdo/once1.jpg" onclick="abrirGaleria(['iimdo/once1.jpg', 'iimdo/once2.jpg', 'iimdo/once3.jpg', 'iimdo/once4.jpg', 'iimdo/once5.jpg', 'iimdo/once6.jpg'])" />
@@ -754,6 +1060,396 @@
     </div>
 </div>
 
+<div class="bloque-inmueble" data-precio="114000:226000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/nuev1.jpg" onclick="abrirGaleria(['iipmdo/nuev1.jpg', 'iipmdo/nuev2.jpg', 'iipmdo/nuev3.jpg', 'iipmdo/nuev4.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO EN VENTA | Propiedad Privada en Yucatán</strong><br>
+        Excelente oportunidad de inversión en propiedad privada. Terrenos listos para escriturar, entregados y delimitados con mojoneras de cemento en una ubicación privilegiada.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: Desde $114,000 hasta $226,000 MXN<br>
+        - Superficie: 600 m²<br>
+        - Certeza Jurídica: Escrituración inmediata y documentación disponible (copia de escrituras).<br><br>
+
+        📍 **Ubicación y Entorno:**<br>
+        Situado en una zona estratégica cerca de la playa, centros educativos y áreas comerciales.<br><br>
+
+        💳 **Formas de Pago:**<br>
+        Facilidades de pago disponibles (se acepta pago en parcialidades).<br><br>
+        
+        📞 999 149 7961 Catalina Rangel<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/N1omdU46uCTVYasw6">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="480000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/diez.jpg" onclick="abrirGaleria(['iipmdo/diez.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO/OPORTUNIDAD DE INVERSIÓN: 12 HECTÁREAS | Valladolid, Yucatán</strong><br>
+        Excelente terreno de 12 hectáreas ubicado estratégicamente a orilla de carretera, a tan solo 40 minutos de Valladolid. Ideal para proyectos de inversión, desarrollo o uso campestre.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $480,000 MXN<br>
+        - Superficie: 12 Hectáreas (Monte alto)<br>
+        - Ubicación: A orilla de carretera, zona de crecimiento en Yucatán.<br><br>
+
+        📄 **Documentación y Certeza:**<br>
+        - Constancia notariada<br>
+        - Cuenta con plano oficial del terreno<br><br>
+
+        🌿 **Características:**<br>
+        Terreno de monte alto, perfecto para diversos proyectos de inversión o desarrollo sustentable debido a su extensión y accesibilidad.<br><br>
+        
+        📞 985 129 7641 Balam Arceo Carlos Juan<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/EDtzQXz8Mf75Dpe16">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="2500000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/once.jpg" onclick="abrirGaleria(['iipmdo/once.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO DE 46 HECTÁREAS CON CENOTE | Buctzotz, Yucatán</strong><br>
+        Extraordinaria oportunidad de inversión en una propiedad privada que destaca por contar con un cenote propio. El terreno es ideal para proyectos ecoturísticos, ganaderos o de conservación.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $2,500,000 MXN<br>
+        - Superficie: 46 Hectáreas<br>
+        - Estatus Jurídico: Propiedad privada<br><br>
+
+        🌿 **Características y Acceso:**<br>
+        - Cuenta con cenote natural dentro de la propiedad.<br>
+        - Acceso al terreno sin inconvenientes y totalmente delimitado.<br><br>
+        
+        📞 999 437 1714 Nico Cruz<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/shQW87d5p8a4uq976">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="1600000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/doce.jpg" onclick="abrirGaleria(['iipmdo/doce.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO DE 10 HECTÁREAS | Pueblo Mágico de Espita, Yucatán</strong><br>
+        Ubicado estratégicamente sobre carretera pavimentada a solo 2.5 kilómetros del centro de Espita. Una excelente oportunidad de inversión en uno de los Pueblos Mágicos de Yucatán.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $1,600,000 MXN<br>
+        - Superficie: 10 Hectáreas<br>
+        - Estatus Jurídico: Propiedad privada<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - Acceso directo por carretera pavimentada.<br>
+        - Cuenta con pozo artesanal propio.<br>
+        - Pequeña casita equipada con panel solar.<br><br>
+        
+        📞 WhatsApp: 999 641 0000 Martin Evia<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/4eA1QE5GWz8m7wLT6">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="395000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/trec1.jpg" onclick="abrirGaleria(['iipmdo/trec1.jpg', 'iipmdo/trec2.jpg', 'iipmdo/trec3.jpg', 'iipmdo/trec4.jpg', 'iipmdo/trec5.jpg', 'iipmdo/trec6.jpg', 'iipmdo/trec7.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO EN ESQUINA | Cerrito Mulchechén, Kanasín, Yucatán</strong><br>
+        Ubicado en calle privada a espaldas de Cielo Alto y a tan solo 5 minutos del periférico. Una excelente oportunidad de inversión en una zona de rápido crecimiento.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $395,000 MXN<br>
+        - Superficie: 8m x 25m<br>
+        - Estatus Jurídico: Con escrituras<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - Terreno bardeado.<br>
+        - Cuenta con servicio de agua potable.<br>
+        - Ubicación estratégica en esquina y calle privada.<br><br>
+        
+        📞 WhatsApp: 999 238 4735 Rodrigo Sayago Rodriguez<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/rn4SxovEdU4WjmAo9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iipmdo/cat1.jpg" onclick="abrirGaleria(['iipmdo/cat1.jpg', 'iipmdo/cat2.jpg', 'iipmdo/cat3.jpg', 'iipmdo/cat4.jpg', 'iipmdo/cat5.jpg', 'iipmdo/cat6.jpg', 'iipmdo/cat7.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA AMUEBLADA Y EQUIPADA | Las Américas 1, Norte de Mérida Yucatán</strong><br>
+        Excelente propiedad ubicada en una de las zonas con mayor demanda al norte de Mérida. Se entrega totalmente amueblada y equipada, lista para habitar.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: (Consultar precio actual)<br>
+        - Superficie: 8m x 20m<br>
+        - Estatus Jurídico: Acepta crédito Infonavit, bancario y efectivo<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - Sala, comedor y cocina equipada.<br>
+        - 2 habitaciones y 1 baño completo.<br>
+        - Porch para 2 autos y pasillo de servicio.<br>
+        - Totalmente bardeado en la parte posterior.<br><br>
+        
+        📞 WhatsApp: 999 947 8994 Claudette Barquet<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/6qEuUDPQnT7wyfNo6">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="190000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/quince.jpg" onclick="abrirGaleria(['iipmdo/quince.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>ÚLTIMOS TERRENOS | Motul, Pueblo Mágico, Yucatán</strong><br>
+        Excelente oportunidad de inversión en terrenos arbolados y delimitados en el emblemático Pueblo Mágico de Motul. Disponibles para entrega inmediata con opciones de pago flexibles.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $190,000 MXN (Contado)<br>
+        - Estatus Jurídico: Propiedad privada<br>
+        - Financiamiento: Pago de contado o a pagos<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - Terrenos con servicio de luz.<br>
+        - Completamente delimitados.<br>
+        - Entorno arbolado natural.<br>
+        - Trato directo.<br><br>
+        
+        📞 WhatsApp: 999 121 5503 Eloy Ordaz<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/3nu3UTtEXB4Hjcrw9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="12000000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/diesyseis1.jpg" onclick="abrirGaleria(['iipmdo/diesyseis1.jpg', 'iipmdo/diesyseis2.jpg', 'iipmdo/diesyseis3.jpg', 'iipmdo/diesyseis4.jpg', 'iipmdo/diesyseis5.jpg', 'iipmdo/diesyseis6.jpg', 'iipmdo/diesyseis7.jpg', 'iipmdo/diesyseis8.jpg', 'iipmdo/diesyseis9.jpg', 'iipmdo/diesyseis10.jpg', 'iipmdo/diesyseis11.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO INDUSTRIAL | Zona Industrial de Mérida, Yucatán</strong><br>
+        Extenso terreno con gran potencial estratégico ubicado en la zona industrial de Mérida, Yucatán. Ideal para desarrollo empresarial o proyectos de gran escala.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $12,000,000 MXN<br>
+        - Superficie: 13,445.47 m²<br>
+        - Estatus Jurídico: Venta de terreno entero<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - 2 casas en obra negra.<br>
+        - Cuenta con piscina y pozo propio.<br>
+        - Servicios de luz y agua disponibles.<br>
+        - Ubicación privilegiada en zona de alto impacto.<br><br>
+        
+        📞 WhatsApp: 990 101 5020 Inm Inmueble Yucatan<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/uMBwbiTaTiMW61wt5">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iipmdo/diesysiete1.jpg" onclick="abrirGaleria(['iipmdo/diesysiete1.jpg', 'iipmdo/diesysiete2.jpg', 'iipmdo/diesysiete3.jpg', 'iipmdo/diesysiete4.jpg', 'iipmdo/diesysiete5.jpg', 'iipmdo/diesysiete6.jpg', 'iipmdo/diesysiete7.jpg', 'iipmdo/diesysiete8.jpg', 'iipmdo/diesysiete9.jpg', 'iipmdo/diesysiete10.jpg', 'iipmdo/diesysiete11.jpg', 'iipmdo/diesysiete12.jpg', 'iipmdo/diesysiete13.jpg', 'iipmdo/diesysiete14.jpg', 'iipmdo/diesysiete15.jpg', 'iipmdo/diesysiete16.jpg', 'iipmdo/diesysiete17.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA REMODELADA | Ciudad Caucel, Mérida Yucatán</strong><br>
+        Propiedad de una planta con acabados de lujo, completamente remodelada. Ubicada en una de las zonas con todos los servicios y alta conectividad en Mérida.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: Tratable (Consultar)<br>
+        - Terreno: 8m x 20.30m<br>
+        - Construcción: 72.43 m²<br>
+        - Estatus: Libre de gravamen<br><br>
+
+        🏡 **Distribución y Detalles:**<br>
+        - Sala y comedor amplios.<br>
+        - Cocina con barra desayunadora.<br>
+        - 2 Recámaras y 2 baños completos.<br>
+        - Pasillo de servicio.<br>
+        - Créditos: Infonavit, Bancario y Recurso propio.<br><br>
+        
+        📞 WhatsApp: 999 395 5888 Claudia Solis (Privanza)<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/aToyg1E6Zbpo5qag8">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iipmdo/diesyocho1.jpg" onclick="abrirGaleria(['iipmdo/diesyocho1.jpg', 'iipmdo/diesyocho2.jpg', 'iipmdo/diesyocho3.jpg', 'iipmdo/diesyocho4.jpg', 'iipmdo/diesyocho5.jpg', 'iipmdo/diesyocho6.jpg', 'iipmdo/diesyocho7.jpg', 'iipmdo/diesyocho8.jpg', 'iipmdo/diesyocho9.jpg', 'iipmdo/diesyocho10.jpg', 'iipmdo/diesyocho11.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENO DE 6 HECTÁREAS | Oxkutzcab, Yucatán</strong><br>
+        Excelente oportunidad agrícola o de inversión en el sur de Yucatán. Terreno productivo con infraestructura básica lista para trabajar en una zona de alta fertilidad.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: (Consultar precio actual)<br>
+        - Superficie: 6 Hectáreas<br>
+        - Estatus Jurídico: Título de propiedad privada<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - Cuenta con sistema de riego completo.<br>
+        - Pozo con tanque de almacenamiento.<br>
+        - Incluye bodega de almacenamiento.<br>
+        - Energía eléctrica a solo 200 metros.<br><br>
+        
+        📞 WhatsApp: 997 141 8413 Harry Gilberth Vazquez Baeza<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/8yLW9u6qxa1nRYps5">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="0">
+    <div class="contenedor-foto">
+        <img src="iipmdo/diesynueve1.jpg" onclick="abrirGaleria(['iipmdo/diesynueve1.jpg', 'iipmdo/diesynueve2.jpg', 'iipmdo/diesynueve3.jpg', 'iipmdo/diesynueve4.jpg', 'iipmdo/diesynueve5.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>LINDO RANCHITO EQUIPADO | A 35 minutos de Mérida Yucatán</strong><br>
+        Excelente propiedad con infraestructura completa para actividades ganaderas o recreativas. Ubicado estratégicamente cerca de la capital y con todos los servicios listos para operar.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: (Consultar precio actual)<br>
+        - Superficie: 4.5 Hectáreas<br>
+        - Estatus Jurídico: Título de propiedad<br><br>
+
+        🏡 **Infraestructura y Mejoras:**<br>
+        - Casa principal y naves.<br>
+        - Corrales, 2 caballerizas, embarcadero y bebedero.<br>
+        - 2 pozos propios.<br>
+        - Energía eléctrica con instalaciones de 110 y 220V.<br><br>
+        
+        📞 WhatsApp: 999 997 1906 Jose Luis Lopez Gonsalez<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/zCqCnko3hWe55Z9C9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="480000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/veinte1.jpg" onclick="abrirGaleria(['iipmdo/veinte1.jpg', 'iipmdo/veinte2.jpg', 'iipmdo/veinte3.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>20 HECTÁREAS CON CENOTE | Tixcacalcupul, Yucatán</strong><br>
+        Oportunidad única de inversión en monte alto con zona maderable, ideal para proyectos ganaderos, agrícolas o ecoturísticos. Incluye un hermoso cenote compartido.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $480,000 MXN<br>
+        - Superficie: 20 Hectáreas<br>
+        - Financiamiento: Planes disponibles<br><br>
+
+        🏡 **Infraestructura y Ubicación:**<br>
+        - Terreno completamente plano y fértil.<br>
+        - Incluye cenote compartido.<br>
+        - A solo 8 km de Tixcacalcupul y 35 min de Valladolid.<br>
+        - Acceso por 8 km de terracería (se recomienda camioneta).<br><br>
+        
+        📞 WhatsApp: 984 285 5615 Luis Poll<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/F5UZQw2c8wqN9rYX9">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="350000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/veintiuno.jpg" onclick="abrirGaleria(['iipmdo/veintiuno.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TU PARAÍSO EN TELCHAC | Ciudad Deportiva, Yucatán</strong><br>
+        Inversión inteligente en la zona de mayor plusvalía. Terreno ideal para proyecto arquitectónico o inversión sustentable a escasos minutos de Telchac Puerto.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $350,000 MXN<br>
+        - Superficie: 360 m²<br>
+        - Estatus Jurídico: Propiedad privada (Permisos SEMARNAT e INAH)<br><br>
+
+        🏡 **Infraestructura y Amenidades:**<br>
+        - Casa Club YA DISPONIBLE para disfrutar.<br>
+        - Entrega 2026: Calle central y calles blancas a pie de lote.<br>
+        - Entrega 2027: Energía eléctrica de media tensión.<br>
+        - Entrega 2028: Club Deportivo integral.<br><br>
+        
+        📞 WhatsApp: 562 662 5178 / 720 875 9341 Omi Gonzalez<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/zYyBMdGeUCQGFvUt6">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="4200000">
+    <div class="contenedor-foto">
+        <img src="iipmdo/veintitres.jpg" onclick="abrirGaleria(['iipmdo/veintitres.jpg', 'iipmdo/veintidos2.jpg', 'iipmdo/veintidos3.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>CASA PARA ESTRENAR | Puerto de Chelem, Yucatán</strong><br>
+        Vive a solo unas cuadras de la playa en este hermoso puerto. Una propiedad con acabados modernos, ideal para retiro, inversión o vivienda vacacional a minutos del centro.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $4,200,000 MXN<br>
+        - Estatus Jurídico: Propiedad privada<br>
+        - Acabados: Estilo Chukum de alta calidad<br><br>
+
+        🏡 **Distribución y Amenidades:**<br>
+        - 2 recámaras con baño privado cada una.<br>
+        - Cocina semi equipada y cubo de luz para jardín interior.<br>
+        - Piscina privada con baño en área exterior.<br>
+        - Ubicación estratégica cerca del mar y servicios.<br><br>
+        
+        📞 WhatsApp: 55 5060 9988 / 55 8068 0864 Andre Byczkowski<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/7wgSMCCu2y5469PP8">Ubicación aproximada</a></p>
+    </div>
+</div>
+
+<div class="bloque-inmueble" data-precio="99780">
+    <div class="contenedor-foto">
+        <img src="iipmdo/veintidos1.jpg" onclick="abrirGaleria(['iipmdo/veintidos1.jpg', 'iipmdo/veintidos2.jpg', 'iipmdo/veintidos3.jpg'])" />
+        <div class="indicador-mas"></div>
+    </div>
+    <div class="info-inmueble">
+        <p><strong>TERRENOS EN VENTA | Telchac, Yucatán</strong><br>
+        Invierte con seguridad en un proyecto ya entregado, ubicado estratégicamente a solo 12 minutos de la playa. Una excelente opción de inversión con certeza jurídica y entrega inmediata.<br><br>
+        
+        ⚡ **Ficha Técnica:**<br>
+        - Precio: $99,780 MXN<br>
+        - Superficie: 369.48 m²<br>
+        - Estatus Jurídico: Propiedad Privada (Escrituración inmediata)<br><br>
+
+        🏡 **Financiamiento y Entrega:**<br>
+        - Enganche desde $10,000 pesos.<br>
+        - Hasta 48 mensualidades sin intereses (MSI).<br>
+        - Terrenos delimitados con mojoneras.<br>
+        - Trato directo y serio.<br><br>
+        
+        📞 WhatsApp: 999 409 7452 Jesus Carballo<br>
+        de parte de Angel L Montes</p>
+        <p><a target="_blank" href="https://maps.app.goo.gl/dkMntnHcSd9aeDmh7">Ubicación Aproximada</a></p>
+    </div>
+</div>
+
+
         </section>
     </div>
 
@@ -766,6 +1462,7 @@
                 Bienvenido, esta es la sección de "Soy dueño", aquí encontrarás mensajes de personas interesadas que necesitan a la brevedad terrenos o casas con sus especificaciones, además de contacto directo y fácil con inversionistas o personas que buscan comprar ya sea en Yucatán o Morelos.
             </p>
         </div>
+
 
         <section class="galeria-flujo">
             
@@ -789,6 +1486,75 @@
             </div>
 
 
+<div class="bloque-inmueble">
+    <div class="info-inmueble" style="width: 100%; padding: 20px;">
+        <h3 style="color: #d9534f; margin-top: 0;">**SE BUSCA PROPIEDAD URGENTE**</h3>
+        <p>Corredores y particulares, tengo <strong>cliente con presupuesto de hasta $1,000,000 USD</strong> listo para compra inmediata.<br><br>
+        
+        📍 <strong>Zonas:</strong> Polanco y Palmas, CDMX.<br>
+        📏 <strong>Superficie:</strong> Mínimo 300 m²<br>
+        🛏️ <strong>Características:</strong> 3 recámaras, terraza y que sea exterior.<br>
+        🚗 <strong>Estacionamiento:</strong> 3 espacios.<br>
+        🧹 <strong>Extras:</strong> Cuarto de servicio.<br><br>
+
+        🤝 <strong>Condición:</strong> Que compartan comisión.<br><br>
+
+        📞 <strong>Informes y Propuestas:</strong><br>
+        56 2678 7225, Abraham Tuxpan<br>
+        de parte de Angel L Montes<br><br>
+        
+        Gracias por el apoyo.</p>
+    </div>
+</div>
+
+
+<div class="bloque-inmueble">
+    <div class="contenedor-foto">
+        <img src="iipmdo/buscador2.jpg" style="filter: grayscale(0.2);" />
+    </div>
+    <div class="info-inmueble">
+        <h3 style="color: #d9534f; margin-top: 0;">**BUSCAMOS CASA URGENTE**</h3>
+        <p>Propietarios y corredores, tengo <strong>cliente listo para compra inmediata</strong> con RECURSOS PROPIOS.<br><br>
+        
+        📍 <strong>Zona:</strong> Únicamente zona marcada en el mapa.<br>
+        💰 <strong>Presupuesto:</strong> $2.5 MDP<br>
+        🏠 <strong>Tipo:</strong> Una sola planta, 2 recámaras.<br>
+        ✨ <strong>Estado:</strong> Remodelada o en muy buen estado.<br><br>
+
+        ⚡ <strong>Condición:</strong> Compra de contado (Recursos propios).<br><br>
+
+        📞 <strong>Nuestro WhatsApp:</strong><br>
+        999 270 6300, Korpala Ostrzyzek<br>
+        de parte de Angel L Montes<br><br>
+        
+        Gracias por el apoyo.</p>
+    </div>
+</div>
+
+<div class="bloque-inmueble">
+    <div class="contenedor-foto">
+        <img src="iipmdo/buscador3.jpg" style="filter: grayscale(0.3);" />
+    </div>
+    <div class="info-inmueble">
+        <h3 style="color: #d9534f; margin-top: 0;">**SE BUSCA TERRENO URGENTE**</h3>
+        <p>Corredores y particulares, tengo <strong>cliente listo para compra inmediata</strong>.<br><br>
+        
+        📍 <strong>Zonas:</strong> Ocotepec, Ahuatepec o Chamilpa, Morelos.<br>
+        📏 <strong>Medidas:</strong> 200 a 300 m²<br>
+        🌲 <strong>Ambiente:</strong> Zona boscosa.<br>
+        🛣️ <strong>Accesos:</strong> Calles pavimentadas, no muy lejos de avenida principal.<br><br>
+
+        ⚡ <strong>Condición:</strong> Compra inmediata.<br><br>
+
+        📞 <strong>Informes y Propuestas:</strong><br>
+        777 152 05 15<br>
+        777 420 33 21   Álvarez Franco<br>
+        de parte de Angel L Montes<br><br>
+        
+        Gracias por el apoyo.</p>
+    </div>
+</div>
+
         </section>
     </div>
 
@@ -800,33 +1566,58 @@
 
     <script>
         let imagenesActuales = [];
-        let indiceActual = 0;
+let indiceActual = 0;
 
-        function mostrarInterfaz(tipo) {
-            document.getElementById('selector-inicial').classList.add('hidden');
-            document.getElementById('interfaz-' + tipo).classList.remove('hidden');
-            if(tipo === 'inversionista') actualizarContadores();
-        }
+function mostrarInterfaz(tipo) {
+    document.getElementById('selector-inicial').classList.add('hidden');
+    if (tipo === 'inversionista') {
+        document.getElementById('interfaz-inversionista').classList.remove('hidden');
+    } else if (tipo === 'dueno') {
+        document.getElementById('interfaz-dueno').classList.remove('hidden');
+    } else if (tipo === 'asesoria') {
+        document.getElementById('interfaz-asesoria').classList.remove('hidden');
+    }
+}
 
-        function regresar() {
-            document.getElementById('selector-inicial').classList.remove('hidden');
-            document.getElementById('interfaz-inversionista').classList.add('hidden');
-            document.getElementById('interfaz-dueno').classList.add('hidden');
-        }
+function regresar() {
+    let interfaces = ['interfaz-inversionista', 'interfaz-dueno', 'interfaz-asesoria'];
+    interfaces.forEach(id => {
+        let el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+    });
+    document.getElementById('selector-inicial').classList.remove('hidden');
+}
 
-        function actualizarContadores() {
-            const fotos = document.querySelectorAll('.bloque-inmueble img[onclick]');
-            fotos.forEach(img => {
-                const match = img.getAttribute('onclick').match(/\[(.*?)\]/);
-                if (match) {
-                    const lista = match[1].split(',').length;
-                    const indicador = img.parentElement.querySelector('.indicador-mas');
-                    if (indicador && lista > 1) {
-                        indicador.innerText = "+" + (lista - 1) + " fotos";
-                    }
-                }
-            });
+function abrirVisor(lista, indice) {
+    imagenesActuales = lista;
+    indiceActual = indice;
+    document.getElementById('visor-imagen').src = imagenesActuales[indiceActual];
+    document.getElementById('visor-fondo').style.display = 'flex';
+}
+
+function cambiarImagen(dir, e) {
+    e.stopPropagation();
+    indiceActual = (indiceActual + dir + imagenesActuales.length) % imagenesActuales.length;
+    document.getElementById('visor-imagen').src = imagenesActuales[indiceActual];
+}
+
+function cerrarVisor() {
+    document.getElementById('visor-fondo').style.display = 'none';
+}
+
+function actualizarContadores() {
+    const fotos = document.querySelectorAll('.bloque-inmueble img[onclick]');
+    fotos.forEach(img => {
+        const match = img.getAttribute('onclick').match(/\[(.*?)\]/);
+        if (match) {
+            const lista = match[1].split(',').length;
+            const indicador = img.parentElement.querySelector('.indicador-mas');
+            if (indicador && lista > 1) {
+                indicador.innerText = "+" + (lista - 1) + " fotos";
+            }
         }
+    });
+}
 
         function abrirGaleria(lista) {
             imagenesActuales = lista;
@@ -845,50 +1636,98 @@
             document.getElementById('visor-fondo').style.display = 'none';
         }
 
-        function filtrarPorEstado(estado) {
-            document.getElementById('inputBusqueda').value = estado;
-            filtrarInmuebles();
-        }
+        let tipoGlobal = 'todos';
+let estadoGlobal = 'todos';
 
-        function limpiarFiltros() {
-            document.getElementById('inputBusqueda').value = "";
-            document.getElementById('selectPrecio').value = "todos";
-            filtrarInmuebles();
-        }
+function iluminarBoton(idBoton, claseGrupo) {
+    let botones = document.querySelectorAll('.' + claseGrupo);
+    botones.forEach(btn => {
+        btn.style.backgroundColor = "";
+        btn.style.color = "";
+    }); 
+    if (idBoton) {
+        let botonActivo = document.getElementById(idBoton);
+        botonActivo.style.backgroundColor = "#007bff"; 
+        botonActivo.style.color = "white";
+    }
+}
 
-        function filtrarInmuebles() {
-    let input = document.getElementById('inputBusqueda').value.toLowerCase();
-    let precioSeleccionado = parseInt(document.getElementById('selectPrecio').value);
+function establecerTipo(tipo, id) {
+    let nuevoTipo = tipo.toLowerCase();
+    if (tipoGlobal === nuevoTipo) {
+        tipoGlobal = 'todos';
+        iluminarBoton(null, 'filtros-tipo .btn-filtro');
+    } else {
+        tipoGlobal = nuevoTipo;
+        iluminarBoton(id, 'filtros-tipo .btn-filtro');
+    }
+    filtrarInmuebles();
+}
+
+function establecerEstado(estado, id) {
+    let nuevoEstado = estado.toLowerCase();
+    if (estadoGlobal === nuevoEstado) {
+        estadoGlobal = 'todos';
+        iluminarBoton(null, 'filtros-estado .btn-filtro');
+    } else {
+        estadoGlobal = nuevoEstado;
+        iluminarBoton(id, 'filtros-estado .btn-filtro');
+    }
+    filtrarInmuebles();
+}
+
+function limpiarFiltros() {
+    document.getElementById('inputBusqueda').value = "";
+    document.getElementById('selectPrecio').value = "999999999";
+    tipoGlobal = 'todos';
+    estadoGlobal = 'todos';
+    iluminarBoton(null, 'btn-filtro');
+    filtrarInmuebles();
+}
+
+function filtrarInmuebles() {
+    let busquedaManual = document.getElementById('inputBusqueda').value.toLowerCase().trim();
+    let precioMax = parseInt(document.getElementById('selectPrecio').value);
     let bloques = document.getElementsByClassName('bloque-inmueble');
 
     for (let i = 0; i < bloques.length; i++) {
         let infoContainer = bloques[i].getElementsByClassName('info-inmueble')[0];
-        let parrafo = infoContainer.getElementsByTagName('p')[0];
-        let precioInmueble = parseInt(bloques[i].getAttribute('data-precio')) || 0;
+        let parrafoPrincipal = infoContainer.getElementsByTagName('p')[0];
+        let tituloNegrita = infoContainer.getElementsByTagName('strong')[0];
+        let precio = parseInt(bloques[i].getAttribute('data-precio')) || 0;
         
-        if (!parrafo.dataset.original) {
-            parrafo.dataset.original = parrafo.innerHTML;
+        if (!parrafoPrincipal.dataset.original) {
+            parrafoPrincipal.dataset.original = parrafoPrincipal.innerHTML;
         }
         
-        let textoParaComparar = parrafo.innerText.toLowerCase();
-        let cumpleTexto = textoParaComparar.includes(input);
+        let textoCompleto = infoContainer.innerText.toLowerCase();
+        let textoTitulo = tituloNegrita ? tituloNegrita.innerText.toLowerCase() : "";
+
+        let cumpleTexto = textoCompleto.includes(busquedaManual);
+        let cumplePrecio = (precioMax === 999999999) || (precio <= precioMax);
+        let cumpleEstado = (estadoGlobal === 'todos') || textoCompleto.includes(estadoGlobal);
         
-        let cumplePrecio = false;
-        if (precioSeleccionado === 999999999) {
-            cumplePrecio = true;
-        } else if (precioInmueble > 0 && precioInmueble <= precioSeleccionado) {
-            cumplePrecio = true;
+        let cumpleTipo = false;
+        let tituloDiceTerreno = textoTitulo.includes('terreno') || textoTitulo.includes('rancho') || textoTitulo.includes('hectárea');
+        let tituloDiceCasa = textoTitulo.includes('casa') || textoTitulo.includes('departamento') || textoTitulo.includes('quinta');
+
+        if (tipoGlobal === 'todos') {
+            cumpleTipo = true;
+        } else if (tipoGlobal === 'casa') {
+            cumpleTipo = tituloDiceCasa && !tituloDiceTerreno;
+        } else if (tipoGlobal === 'terreno') {
+            cumpleTipo = tituloDiceTerreno;
         }
 
-        if (cumpleTexto && cumplePrecio) {
+        if (cumpleTexto && cumplePrecio && cumpleEstado && cumpleTipo) {
             bloques[i].style.display = "flex";
-            if (input !== "") {
-                let regex = new RegExp(`(${input})`, "gi");
-                let textoVisible = parrafo.innerText;
-                let nuevoTexto = textoVisible.replace(regex, '<span class="resaltado">$1</span>');
-                parrafo.innerHTML = nuevoTexto.replace(/\n/g, '<br>');
+            if (busquedaManual !== "") {
+                let regex = new RegExp(`(${busquedaManual})`, "gi");
+                let textoParaResaltar = parrafoPrincipal.innerText;
+                let nuevoHTML = textoParaResaltar.replace(regex, '<span class="resaltado">$1</span>');
+                parrafoPrincipal.innerHTML = nuevoHTML.replace(/\n/g, '<br>');
             } else {
-                parrafo.innerHTML = parrafo.dataset.original;
+                parrafoPrincipal.innerHTML = parrafoPrincipal.dataset.original;
             }
         } else {
             bloques[i].style.display = "none";
